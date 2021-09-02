@@ -1,5 +1,5 @@
 import React from 'react'
-
+import s from './Navbar.module.css'
 const Navbar = () => {
   const i18n = {
     profile: 'Profile',
@@ -10,24 +10,24 @@ const Navbar = () => {
   }
 
   return (
-    <nav className="nav">
-      <div>
+    <nav className={s.nav}>
+      <div className={`${s.item} ${s.active}`}>
         <a>{i18n.profile}</a>
       </div>
       <br />
-      <div>
+      <div className={s.item}>
         <a>{i18n.messages}</a>
       </div>
       <br />
-      <div>
+      <div className={s.item}>
         <a>{i18n.news}</a>
       </div>
       <br />
-      <div>
+      <div className={s.item}>
         <a>{i18n.music}</a>
       </div>
       <br />
-      <div>
+      <div className={s.item}>
         <a>{i18n.settings}</a>
       </div>
     </nav>

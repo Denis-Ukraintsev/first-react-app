@@ -1,5 +1,5 @@
 import React from 'react'
-
+import s from './Profile.module.css'
 const Profile = () => {
   const i18n = {
     description: 'ava + description',
@@ -9,14 +9,14 @@ const Profile = () => {
   }
 
   return (
-    <div className="content">
+    <div className={s.content}>
       <div>
         <img src="https://images4.alphacoders.com/697/697728.jpg" />
       </div>
-      <div>{i18n.description}</div>
-      <div>{i18n.myPosts}</div>
-      <div>{i18n.post1}</div>
-      <div>{i18n.post2}</div>
+      <div className={s.item}>{i18n.description}</div>
+      <div className={s.item}>{i18n.myPosts}</div>
+      <div className={s.item}>{i18n.post1}</div>
+      <div className={s.item}>{i18n.post2}</div>
     </div>
   )
 }
