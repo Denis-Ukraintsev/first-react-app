@@ -7,7 +7,3 @@
 .item {
   color: whitesmoke;
 }
-
-.item.active {
-  color: gold;
-}

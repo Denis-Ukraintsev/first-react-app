@@ -11,7 +11,7 @@ const Navbar = () => {
 
   return (
     <nav className={s.nav}>
-      <div className={`${s.item} ${s.active}`}>
+      <div className={s.item}>
         <a>{i18n.profile}</a>
       </div>
       <br />
