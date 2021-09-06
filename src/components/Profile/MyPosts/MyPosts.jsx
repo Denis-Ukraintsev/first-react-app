@@ -14,9 +14,8 @@ const MyPosts = () => {
       <div className={s.item}>{i18n.myPosts}</div>
       <div>{i18n.textArea}</div>
       <div>{i18n.button}</div>
-      <Post />
-      <Post />
-      <Post />
+      <Post message="Hi, how are You?" likeCount="15" />
+      <Post message="It's my first post" likeCount="20" />
     </div>
   )
 }
