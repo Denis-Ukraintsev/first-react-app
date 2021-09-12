@@ -8,8 +8,8 @@ const Profile = () => {
   }
 
   return (
-    <div className={s.content}>
-      <div>
+    <div>
+      <div className={s.content}>
         <img src="https://images4.alphacoders.com/697/697728.jpg" />
       </div>
       <div className={s.item}>{i18n.description}</div>
