@@ -11,6 +11,6 @@
 }
 .app-wrapper-content {
   grid-area: c;
-  background-color: rgb(185, 103, 144);
+  background: linear-gradient(to left, rgb(87, 87, 148), pink);
   border-radius: 5px;
 }

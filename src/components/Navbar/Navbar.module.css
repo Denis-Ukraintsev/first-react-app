@@ -1,9 +1,18 @@
 .nav {
   grid-area: n;
-  background-color: rgb(47, 179, 255);
+  background: linear-gradient(to right, rgb(87, 87, 148), pink);
   border-radius: 5px;
 }
 
 .item {
   color: whitesmoke;
+}
+
+.item a {
+  color: rgb(240, 216, 236);
+  text-decoration: none;
+}
+
+.item :active {
+  color: brown;
 }
