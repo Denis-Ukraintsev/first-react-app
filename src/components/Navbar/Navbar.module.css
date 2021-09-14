@@ -2,6 +2,7 @@
   grid-area: n;
   background: linear-gradient(to right, rgb(87, 87, 148), pink);
   border-radius: 5px;
+  padding: 5px;
 }
 
 .item {
