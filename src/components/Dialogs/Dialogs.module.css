@@ -8,6 +8,15 @@
   padding: 5px;
 }
 
+.dialogueName a {
+  text-decoration: none;
+  color: rgb(23, 88, 104);
+}
+
+.dialogueName :active {
+  color: brown;
+}
+
 .messageName {
   padding: 5px;
 }
