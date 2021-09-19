@@ -1,6 +1,7 @@
 import React from 'react'
 import s from './Profile.module.css'
 import MyPosts from './MyPosts/MyPosts'
+import ProfileInfo from './ProfileInfo/ProfileInfo'
 
 const Profile = () => {
   const i18n = {
@@ -9,9 +10,7 @@ const Profile = () => {
 
   return (
     <div>
-      <div className={s.content}>
-        <img src="https://images4.alphacoders.com/697/697728.jpg" />
-      </div>
+      <ProfileInfo />
       <div className={s.item}>{i18n.description}</div>
       <MyPosts />
     </div>

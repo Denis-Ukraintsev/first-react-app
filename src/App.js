@@ -3,7 +3,7 @@ import './App.css'
 import Header from './components/Header/Header'
 import Navbar from './components/Navbar/Navbar'
 import Profile from './components/Profile/Profile'
-import Dialogs from './components/Dialogs/Dialogs'
+import Dialogues from './components/Dialogues/Dialogues'
 import News from './components/News/News'
 import Photos from './components/Photos/Photos'
 import { Route } from 'react-router'
@@ -15,7 +15,7 @@ const App = () => {
         <Header />
         <Navbar />
         <div className="app-wrapper-content">
-          <Route exact path="/Dialogs" component={Dialogs} />
+          <Route exact path="/Dialogues" component={Dialogues} />
           <Route path="/Profile" component={Profile} />
           <Route path="/News" component={News} />
           <Route path="/Photos" component={Photos} />

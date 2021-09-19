@@ -18,7 +18,7 @@ const Navbar = () => {
       </div>
       <br />
       <div className={s.item}>
-        <NavLink to="/Dialogs">{i18n.messages}</NavLink>
+        <NavLink to="/Dialogues">{i18n.messages}</NavLink>
       </div>
       <br />
       <div className={s.item}>
