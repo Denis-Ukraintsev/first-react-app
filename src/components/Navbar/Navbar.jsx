@@ -4,7 +4,7 @@ import s from './Navbar.module.css'
 const Navbar = () => {
   const i18n = {
     profile: 'Profile',
-    messages: 'Messages',
+    messages: 'Dialogues',
     news: 'News',
     photos: 'Photos',
   }

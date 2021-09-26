@@ -18,9 +18,20 @@
 }
 
 .messageName {
-  padding: 5px;
+  padding: 8px;
+  margin: 7px;
 }
 
 .messages {
   color: rgb(71, 22, 80);
+}
+
+.dialogueName img {
+  width: 30px;
+  height: 30px;
+  border-radius: 5px;
+}
+.messageName li {
+  display: list-item;
+  list-style-type: circle;
 }

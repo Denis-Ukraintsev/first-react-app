@@ -8,8 +8,7 @@ const Profile = (props) => {
   const i18n = {
     description: 'ava + description',
   }
-
-  let postsElements = props.posts.map((p) => (
+  let postsElements = props.state.posts.map((p) => (
     <Post message={p.message} id={p.id} likeCount={p.likeCount} />
   ))
 
