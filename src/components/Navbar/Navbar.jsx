@@ -1,36 +1,60 @@
-import React from 'react'
-import { NavLink } from 'react-router-dom'
-import s from './Navbar.module.css'
+import React from "react";
+import { NavLink } from "react-router-dom";
+import styled from "styled-components";
+
 const Navbar = () => {
   const i18n = {
-    profile: 'Profile',
-    messages: 'Dialogues',
-    news: 'News',
-    photos: 'Photos',
-  }
+    profile: "Profile",
+    messages: "Dialogues",
+    news: "News",
+    photos: "Photos"
+  };
+
+  const activeStyles = {
+    color: "brown"
+  };
 
   return (
-    <nav className={s.nav}>
-      <div className={s.item}>
-        <NavLink to="/Profile" activeClassName={s.active}>
+    <MenuContainer>
+      <MenuItem>
+        <NavLink to="/Profile" activeStyle={activeStyles}>
           {i18n.profile}
         </NavLink>
-      </div>
+      </MenuItem>
       <br />
-      <div className={s.item}>
-        <NavLink to="/Dialogues">{i18n.messages}</NavLink>
-      </div>
+      <MenuItem>
+        <NavLink to="/Dialogues" activeStyle={activeStyles}>
+          {i18n.messages}
+        </NavLink>
+      </MenuItem>
       <br />
-      <div className={s.item}>
-        <NavLink to="/News">{i18n.news}</NavLink>
-      </div>
+      <MenuItem>
+        <NavLink to="/News" activeStyle={activeStyles}>
+          {i18n.news}
+        </NavLink>
+      </MenuItem>
       <br />
-      <div className={s.item}>
-        <NavLink to="/Photos">{i18n.photos}</NavLink>
-      </div>
+      <MenuItem>
+        <NavLink to="/Photos" activeStyle={activeStyles}>
+          {i18n.photos}
+        </NavLink>
+      </MenuItem>
       <br />
-    </nav>
-  )
-}
+    </MenuContainer>
+  );
+};
 
-export default Navbar
+const MenuItem = styled.div`
+  a {
+    color: rgb(240, 216, 236);
+    text-decoration: none;
+  }
+`;
+const MenuContainer = styled.nav`
+  grid-area: n;
+  background: linear-gradient(to right, rgb(87, 87, 148), pink);
+  border-radius: 5px;
+  padding: 5px;
+`;
+
+export default Navbar;
