@@ -1,25 +1,30 @@
-import React from 'react'
-import s from './Profile.module.css'
-import MyPosts from './MyPosts/MyPosts'
-import ProfileInfo from './ProfileInfo/ProfileInfo'
-import Post from './MyPosts/Post/Post'
+import React from "react";
+import MyPosts from "./MyPosts/MyPosts";
+import ProfileInfo from "./ProfileInfo/ProfileInfo";
+import Post from "./MyPosts/Post/Post";
+import styled from "styled-components";
 
 const Profile = (props) => {
   const i18n = {
-    description: 'ava + description',
-  }
+    description: "ava + description"
+  };
   let postsElements = props.state.posts.map((p) => (
     <Post message={p.message} id={p.id} likeCount={p.likeCount} />
-  ))
+  ));
 
   return (
     <div>
       <ProfileInfo />
-      <div className={s.item}>{i18n.description}</div>
+      <ItemContainer>{i18n.description}</ItemContainer>
       <MyPosts />
       {postsElements}
     </div>
-  )
-}
+  );
+};
 
-export default Profile
+const ItemContainer = styled.div`
+  color: rgb(23, 88, 104);
+  padding: 5px;
+`;
+
+export default Profile;
