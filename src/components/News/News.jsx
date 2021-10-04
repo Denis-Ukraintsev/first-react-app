@@ -1,7 +1,12 @@
-import React from 'react'
-import s from './News.module.css'
-const News = (props) => {
-  return <div className={s.item}>News</div>
-}
+import React from "react";
+import styed from "styled-components";
 
-export default News
+const News = (props) => {
+  return <NewsContainer>News</NewsContainer>;
+};
+
+const NewsContainer = styed.div`
+color: rgb(23, 88, 104);
+`;
+
+export default News;

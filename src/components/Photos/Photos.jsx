@@ -1,7 +1,12 @@
-import React from 'react'
-import s from './Photos.module.css'
-const Photos = (props) => {
-  return <div className={s.item}>Photos</div>
-}
+import React from "react";
+import styled from "styled-components";
 
-export default Photos
+const Photos = (props) => {
+  return <PhotosContainer>Photos</PhotosContainer>;
+};
+
+const PhotosContainer = styled.div`
+  color: rgb(23, 88, 104);
+`;
+
+export default Photos;

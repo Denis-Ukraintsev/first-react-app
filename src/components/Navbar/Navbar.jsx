@@ -10,10 +10,6 @@ const Navbar = () => {
     photos: "Photos"
   };
 
-  const activeStyles = {
-    color: "brown"
-  };
-
   return (
     <MenuContainer>
       <MenuItem>
@@ -56,5 +52,9 @@ const MenuContainer = styled.nav`
   border-radius: 5px;
   padding: 5px;
 `;
+
+const activeStyles = {
+  color: "brown"
+};
 
 export default Navbar;
