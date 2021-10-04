@@ -2,9 +2,9 @@ import React from 'react'
 import s from './Post.module.css'
 
 const Post = (props) => {
-  const i18n = {
-    post1: '',
-  }
+  // const i18n = {
+  //   post1: '',
+  // }
 
   return (
     <div className={s.content}>
