@@ -17,7 +17,7 @@ const DialogueItem = (props) => {
 const DialogueItemContainer = styled.div`
   padding: 5px;
   a {
-    color: rgb(170, 111, 180);
+    color: rgb(71, 22, 80);
     text-decoration: none;
   }
   img {

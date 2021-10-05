@@ -6,7 +6,8 @@ const Photos = (props) => {
 };
 
 const PhotosContainer = styled.div`
-  color: rgb(23, 88, 104);
+  color: rgb(71, 22, 80);
+  margin: 5px;
 `;
 
 export default Photos;
