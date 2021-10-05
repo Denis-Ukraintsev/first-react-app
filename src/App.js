@@ -7,7 +7,6 @@ import Dialogues from './components/Dialogues/Dialogues'
 import News from './components/News/News'
 import Photos from './components/Photos/Photos'
 import { Route } from 'react-router'
-import { addPost } from './components/redux/state'
 
 const App = (props) => {
   return (
