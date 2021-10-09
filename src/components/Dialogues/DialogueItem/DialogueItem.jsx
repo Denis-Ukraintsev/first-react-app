@@ -1,18 +1,18 @@
-import React from "react";
-import { NavLink } from "react-router-dom";
-import styled from "styled-components";
+import React from 'react'
+import { NavLink } from 'react-router-dom'
+import styled from 'styled-components'
 
 const DialogueItem = (props) => {
-  let path = "/Dialogues/" + props.id;
+  let path = '/Dialogues/' + props.id
   return (
     <DialogueItemContainer>
       <NavLink to={path} activeStyle={NameActive}>
-        {props.avatar}
+        <Avatar src={props.avatar} alt="avatar" />
         {props.name}
       </NavLink>
     </DialogueItemContainer>
-  );
-};
+  )
+}
 
 const DialogueItemContainer = styled.div`
   padding: 5px;
@@ -20,15 +20,14 @@ const DialogueItemContainer = styled.div`
     color: rgb(71, 22, 80);
     text-decoration: none;
   }
-  img {
-    width: 30px;
-    height: 30px;
-    border-radius: 5px;
-  }
-`;
-
+`
+const Avatar = styled.img`
+  width: 30px;
+  height: 30px;
+  border-radius: 5px;
+`
 const NameActive = {
-  color: "brown"
-};
+  color: 'brown',
+}
 
-export default DialogueItem;
+export default DialogueItem

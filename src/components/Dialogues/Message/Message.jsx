@@ -1,22 +1,21 @@
-import React from "react";
-import styled from "styled-components";
+import React from 'react'
+import styled from 'styled-components'
 
 const Message = (props) => {
   return (
     <MessageContainer>
-      <MessageContainerLi> {props.message} </MessageContainerLi>
+      <li> {props.message} </li>
     </MessageContainer>
-  );
-};
+  )
+}
 
 const MessageContainer = styled.div`
   padding: 8px;
   margin: 7px;
-`;
+  li {
+    display: list-item;
+    list-style-type: circle;
+  }
+`
 
-const MessageContainerLi = styled.li`
-  display: list-item;
-  list-style-type: circle;
-`;
-
-export default Message;
+export default Message

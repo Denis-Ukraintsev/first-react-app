@@ -4,27 +4,28 @@ import Post from './Post/Post'
 
 const MyPosts = (props) => {
   const i18n = {
-    textArea: <textarea></textarea>,
-    button: <button>add post</button>,
+    button: 'add post',
     myPosts: 'My posts',
   }
 
-  let postsElements = props.state.posts.map((p) => (
+  const postsElements = props.state.posts.map((p) => (
     <Post message={p.message} id={p.id} likeCount={p.likeCount} />
   ))
 
-  let newPostElement = React.createRef()
+  const newPostElement = React.createRef()
 
-  let addPost = () => {
-    let text = newPostElement.current.value
+  const addPost = () => {
+    const text = newPostElement.current.value
     props.addPost(text)
     newPostElement.current.value = ''
   }
   return (
     <div>
       <ItemContainer>{i18n.myPosts}</ItemContainer>
-      <div ref={newPostElement}>{i18n.textArea}</div>
-      <div onClick={addPost}>{i18n.button}</div>
+      <div>
+        <textarea ref={newPostElement}></textarea>
+      </div>
+      <button onClick={addPost}>{i18n.button}</button>
       <div>{postsElements}</div>
     </div>
   )
