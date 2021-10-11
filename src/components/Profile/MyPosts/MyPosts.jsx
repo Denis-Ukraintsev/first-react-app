@@ -8,22 +8,30 @@ const MyPosts = (props) => {
     myPosts: 'My posts',
   }
 
-  const postsElements = props.state.posts.map((p) => (
+  const postsElements = props.posts.map((p) => (
     <Post message={p.message} id={p.id} likeCount={p.likeCount} />
   ))
 
   const newPostElement = React.createRef()
 
   const addPost = () => {
-    const text = newPostElement.current.value
-    props.addPost(text)
-    newPostElement.current.value = ''
+    props.addPost('')
   }
+
+  const onPostChange = () => {
+    const text = newPostElement.current.value
+    props.updateNewPost(text)
+  }
+
   return (
     <div>
       <ItemContainer>{i18n.myPosts}</ItemContainer>
       <div>
-        <textarea ref={newPostElement}></textarea>
+        <textarea
+          onChange={onPostChange}
+          ref={newPostElement}
+          value={props.newPostText}
+        />
       </div>
       <button onClick={addPost}>{i18n.button}</button>
       <div>{postsElements}</div>

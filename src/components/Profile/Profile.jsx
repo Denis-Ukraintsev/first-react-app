@@ -12,7 +12,12 @@ const Profile = (props) => {
     <div>
       <ProfileInfo />
       <ItemContainer>{i18n.description}</ItemContainer>
-      <MyPosts state={props.state} addPost={props.addPost} />
+      <MyPosts
+        posts={props.profilePage.posts}
+        addPost={props.addPost}
+        newPostText={props.profilePage.newPostText}
+        updateNewPost={props.updateNewPost}
+      />
     </div>
   )
 }
