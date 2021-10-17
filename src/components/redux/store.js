@@ -1,6 +1,6 @@
 let rerenderEntireTree = () => {}
 
-const state = {
+const store = {
   profilePage: {
     posts: [
       { id: 1, message: 'Hi, how are You?', likeCount: 15 },
@@ -43,25 +43,25 @@ const state = {
       { id: 4, message: 'Hey, peaches! I am the creator of VK!' },
     ],
   },
-}
-// window.state = state
-export const addPost = () => {
-  const newPost = {
-    id: 5,
-    message: state.profilePage.newPostText,
-    likeCount: 5,
-  }
-  state.profilePage.posts.push(newPost)
-  state.profilePage.newPostText = ''
-  rerenderEntireTree()
-}
-export const updateNewPost = (newText) => {
-  state.profilePage.newPostText = newText
-  rerenderEntireTree()
+
+  addPost() {
+    const newPost = {
+      id: 5,
+      message: store.profilePage.newPostText,
+      likeCount: 5,
+    }
+    store.profilePage.posts.push(newPost)
+    store.profilePage.newPostText = ''
+    rerenderEntireTree()
+  },
+  updateNewPost(newText) {
+    store.profilePage.newPostText = newText
+    rerenderEntireTree()
+  },
+
+  subscribe(observer) {
+    rerenderEntireTree = observer
+  },
 }
 
-export const subscribe = (observer) => {
-  rerenderEntireTree = observer // observer - pattern
-}
-
-export default state
+export default store

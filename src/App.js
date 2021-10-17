@@ -18,15 +18,15 @@ const App = (props) => {
           path="/Profile"
           render={() => (
             <Profile
-              profilePage={props.state.profilePage}
-              addPost={props.addPost}
-              updateNewPost={props.updateNewPost}
+              profilePage={props.store.profilePage}
+              addPost={props.store.addPost}
+              updateNewPost={props.store.updateNewPost}
             />
           )}
         />
         <Route
           path="/Dialogues"
-          render={() => <Dialogues state={props.state.dialoguesPage} />}
+          render={() => <Dialogues state={props.store.dialoguesPage} />}
         />
         <Route path="/News" render={() => <News />} />
         <Route path="/Photos" render={() => <Photos />} />
