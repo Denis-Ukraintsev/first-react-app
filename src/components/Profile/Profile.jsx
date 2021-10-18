@@ -14,9 +14,8 @@ const Profile = (props) => {
       <ItemContainer>{i18n.description}</ItemContainer>
       <MyPosts
         posts={props.profilePage.posts}
-        addPost={props.addPost}
+        dispatch={props.dispatch}
         newPostText={props.profilePage.newPostText}
-        updateNewPost={props.updateNewPost}
       />
     </div>
   )

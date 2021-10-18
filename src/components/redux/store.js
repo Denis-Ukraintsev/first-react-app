@@ -44,29 +44,31 @@ const store = {
     },
   },
 
+  rerenderEntireTree() {},
+
   getState() {
     return this._state
   },
 
-  rerenderEntireTree() {},
-
-  addPost() {
-    const newPost = {
-      id: 5,
-      message: this._state.profilePage.newPostText,
-      likeCount: 5,
-    }
-    this._state.profilePage.posts.push(newPost)
-    this._state.profilePage.newPostText = ''
-    this.rerenderEntireTree()
-  },
-  updateNewPost(newText) {
-    this._state.profilePage.newPostText = newText
-    this.rerenderEntireTree()
-  },
-
   subscribe(observer) {
     this.rerenderEntireTree = observer
+  },
+
+  dispatch(action) {
+    // {type: 'ADD-POST'}
+    if (action.type === 'ADD-POST') {
+      const newPost = {
+        id: 5,
+        message: this._state.profilePage.newPostText,
+        likeCount: 5,
+      }
+      this._state.profilePage.posts.push(newPost)
+      this._state.profilePage.newPostText = ''
+      this.rerenderEntireTree()
+    } else if (action.type === 'UPDATE-NEW-POST-TEXT') {
+      this._state.profilePage.newPostText = action.newText
+      this.rerenderEntireTree()
+    }
   },
 }
 
