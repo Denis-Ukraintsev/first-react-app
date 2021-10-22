@@ -17,7 +17,6 @@ const MyPosts = (props) => {
   ))
 
   const newPostElement = React.createRef()
-
   const addPost = () => {
     props.dispatch(addPostCreateAction())
   }
@@ -26,7 +25,6 @@ const MyPosts = (props) => {
     const text = newPostElement.current.value
     props.dispatch(updateNewPostTextCreateAction(text))
   }
-
   return (
     <div>
       <ItemContainer>{i18n.myPosts}</ItemContainer>

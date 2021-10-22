@@ -1,5 +1,8 @@
 const ADD_POST = 'ADD-POST'
 const UPDATE_NEW_POST_TEXT = 'UPDATE-NEW-POST-TEXT'
+const ADD_NEW_MESSAGE = 'ADD-NEW-MESSAGE'
+const UPDATE_NEW_POST_MESSAGE = 'UPDATE-NEW-POST-MESSAGE'
+
 const store = {
   _state: {
     profilePage: {
@@ -8,7 +11,7 @@ const store = {
         { id: 2, message: "It's my first post", likeCount: 20 },
         { id: 3, message: 'Wow, amazing site', likeCount: 21 },
       ],
-      newPostText: 'den.from.oz',
+      newPostText: 'den.from.ozzzz',
     },
     dialoguesPage: {
       dialogues: [
@@ -43,6 +46,7 @@ const store = {
         { id: 3, message: 'Meow, I am a cat rock climber' },
         { id: 4, message: 'Hey, peaches! I am the creator of VK!' },
       ],
+      newMessage: '',
     },
   },
 
@@ -63,15 +67,35 @@ const store = {
         message: this._state.profilePage.newPostText,
         likeCount: 5,
       }
+
       this._state.profilePage.posts.push(newPost)
       this._state.profilePage.newPostText = ''
       this.rerenderEntireTree()
     } else if (action.type === UPDATE_NEW_POST_TEXT) {
       this._state.profilePage.newPostText = action.newText
       this.rerenderEntireTree()
+    } else if (action.type === ADD_NEW_MESSAGE) {
+      const newPostMessage = {
+        id: 4,
+        message: this._state.dialoguesPage.newMessage,
+      }
+
+      this._state.dialoguesPage.messages.push(newPostMessage)
+      this._state.dialoguesPage.newMessage = ''
+      this.rerenderEntireTree()
+    } else if (action.type === UPDATE_NEW_POST_MESSAGE) {
+      this._state.dialoguesPage.newMessage = action.newText
+      this.rerenderEntireTree()
     }
   },
 }
+
+export const addNewMessageCreateAction = () => ({ type: ADD_NEW_MESSAGE })
+
+export const updateNewPostMessageCreateAction = (text) => ({
+  type: UPDATE_NEW_POST_MESSAGE,
+  text,
+})
 
 export const addPostCreateAction = () => ({ type: ADD_POST })
 
