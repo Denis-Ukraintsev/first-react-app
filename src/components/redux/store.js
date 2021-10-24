@@ -84,7 +84,7 @@ const store = {
       this._state.dialoguesPage.newMessage = ''
       this.rerenderEntireTree()
     } else if (action.type === UPDATE_NEW_POST_MESSAGE) {
-      this._state.dialoguesPage.newMessage = action.newText
+      this._state.dialoguesPage.newMessage = action.messageText
       this.rerenderEntireTree()
     }
   },
@@ -94,14 +94,14 @@ export const addNewMessageCreateAction = () => ({ type: ADD_NEW_MESSAGE })
 
 export const updateNewPostMessageCreateAction = (text) => ({
   type: UPDATE_NEW_POST_MESSAGE,
-  text,
+  messageText: text,
 })
 
 export const addPostCreateAction = () => ({ type: ADD_POST })
 
 export const updateNewPostTextCreateAction = (text) => ({
   type: UPDATE_NEW_POST_TEXT,
-  text,
+  newText: text,
 })
 
 export default store

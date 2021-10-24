@@ -38,9 +38,10 @@ const Dialogues = (props) => {
       </div>
       <div>
         <textarea
+          placeholder="type new message"
           onChange={onMessageChange}
           ref={newMessageElement}
-          value={props.newPostText}
+          value={props.newMessage}
         ></textarea>
       </div>
     </DialoguesContainer>

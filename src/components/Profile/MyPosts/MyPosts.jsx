@@ -30,6 +30,7 @@ const MyPosts = (props) => {
       <ItemContainer>{i18n.myPosts}</ItemContainer>
       <div>
         <textarea
+          name="ter"
           onChange={onPostChange}
           ref={newPostElement}
           value={props.newPostText}
