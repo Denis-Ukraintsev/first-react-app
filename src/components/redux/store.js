@@ -1,3 +1,6 @@
+import dialoguesReducer from './dialogues-reducer'
+import profileReducer from './profile-reducer'
+
 const ADD_POST = 'ADD-POST'
 const UPDATE_NEW_POST_TEXT = 'UPDATE-NEW-POST-TEXT'
 const ADD_NEW_MESSAGE = 'ADD-NEW-MESSAGE'
@@ -50,8 +53,6 @@ const store = {
     },
   },
 
-  rerenderEntireTree() {},
-
   getState() {
     return this._state
   },
@@ -61,32 +62,12 @@ const store = {
   },
 
   dispatch(action) {
-    if (action.type === ADD_POST) {
-      const newPost = {
-        id: 5,
-        message: this._state.profilePage.newPostText,
-        likeCount: 5,
-      }
-
-      this._state.profilePage.posts.push(newPost)
-      this._state.profilePage.newPostText = ''
-      this.rerenderEntireTree()
-    } else if (action.type === UPDATE_NEW_POST_TEXT) {
-      this._state.profilePage.newPostText = action.newText
-      this.rerenderEntireTree()
-    } else if (action.type === ADD_NEW_MESSAGE) {
-      const newPostMessage = {
-        id: 4,
-        message: this._state.dialoguesPage.newMessage,
-      }
-
-      this._state.dialoguesPage.messages.push(newPostMessage)
-      this._state.dialoguesPage.newMessage = ''
-      this.rerenderEntireTree()
-    } else if (action.type === UPDATE_NEW_POST_MESSAGE) {
-      this._state.dialoguesPage.newMessage = action.messageText
-      this.rerenderEntireTree()
-    }
+    this._state.profilePage = profileReducer(this._state.profilePage, action)
+    this._state.dialoguesPage = dialoguesReducer(
+      this._state.dialoguesPage,
+      action
+    )
+    this.rerenderEntireTree()
   },
 }
 
