@@ -57,6 +57,8 @@ const store = {
     return this._state
   },
 
+  rerenderEntireTree() {},
+
   subscribe(observer) {
     this.rerenderEntireTree = observer
   },
@@ -67,7 +69,7 @@ const store = {
       this._state.dialoguesPage,
       action
     )
-    this.rerenderEntireTree()
+    this.rerenderEntireTree(this.getState())
   },
 }
 

@@ -3,24 +3,25 @@ import MyPosts from './MyPosts/MyPosts'
 import ProfileInfo from './ProfileInfo/ProfileInfo'
 import styled from 'styled-components'
 
-const Profile = (props) => {
+const Profile = ({ profilePage, dispatch }) => {
   const i18n = {
     description: 'Ava + Description',
   }
 
   return (
-    <div>
+    <Root>
       <ProfileInfo />
       <ItemContainer>{i18n.description}</ItemContainer>
       <MyPosts
-        posts={props.profilePage.posts}
-        dispatch={props.dispatch}
-        newPostText={props.profilePage.newPostText}
+        posts={profilePage.posts}
+        dispatch={dispatch}
+        newPostText={profilePage.newPostText}
       />
-    </div>
+    </Root>
   )
 }
 
+const Root = styled.div``
 const ItemContainer = styled.div`
   color: rgb(23, 88, 104);
   padding: 5px;

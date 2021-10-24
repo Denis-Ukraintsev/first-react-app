@@ -19,13 +19,12 @@ const Dialogues = (props) => {
     <Message message={m.message} id={m.id} />
   ))
 
-  const newMessageElement = React.createRef()
   const addNewMessage = () => {
     props.dispatch(addNewMessageCreateAction())
   }
 
-  const onMessageChange = () => {
-    const text = newMessageElement.current.value
+  const onMessageChange = (event) => {
+    const text = event.currentTarget.value
     props.dispatch(updateNewPostMessageCreateAction(text))
   }
   return (
@@ -40,9 +39,8 @@ const Dialogues = (props) => {
         <textarea
           placeholder="type new message"
           onChange={onMessageChange}
-          ref={newMessageElement}
-          value={props.newMessage}
-        ></textarea>
+          value={props.dialoguesPage.newMessage}
+        />
       </div>
     </DialoguesContainer>
   )

@@ -5,14 +5,14 @@ import './index.css'
 import App from './App'
 import { BrowserRouter } from 'react-router-dom'
 
-const rerenderEntireTree = () => {
+const rerenderEntireTree = (state) => {
   ReactDOM.render(
     <BrowserRouter>
-      <App store={store.getState()} dispatch={store.dispatch.bind(store)} />
+      <App state={state} dispatch={store.dispatch.bind(store)} />
     </BrowserRouter>,
     document.getElementById('root')
   )
 }
-rerenderEntireTree(store)
+rerenderEntireTree(store.getState())
 
 store.subscribe(rerenderEntireTree)
