@@ -1,14 +1,14 @@
-import React from 'react'
-import './App.css'
-import Header from './components/Header/Header'
-import Navbar from './components/Navbar/Navbar'
-import Profile from './components/Profile/Profile'
-import Dialogues from './components/Dialogues/Dialogues'
-import News from './components/News/News'
-import Photos from './components/Photos/Photos'
-import { Route } from 'react-router'
+import React from "react";
+import "./App.css";
+import Header from "./components/Header/Header";
+import Navbar from "./components/Navbar/Navbar";
+import Profile from "./components/Profile/Profile";
+import Dialogues from "./components/Dialogues/Dialogues";
+import News from "./components/News/News";
+import Photos from "./components/Photos/Photos";
+import { Route } from "react-router";
 
-const App = (props) => {
+const App = ({ state, dispatch }) => {
   return (
     <div className="app-wrapper">
       <Header />
@@ -17,18 +17,15 @@ const App = (props) => {
         <Route
           path="/Profile"
           render={() => (
-            <Profile
-              profilePage={props.state.profilePage}
-              dispatch={props.dispatch}
-            />
+            <Profile profilePage={state.profilePage} dispatch={dispatch} />
           )}
         />
         <Route
           path="/Dialogues"
           render={() => (
             <Dialogues
-              dialoguesPage={props.state.dialoguesPage}
-              dispatch={props.dispatch}
+              dialoguesPage={state.dialoguesPage}
+              dispatch={dispatch}
             />
           )}
         />
@@ -36,6 +33,6 @@ const App = (props) => {
         <Route path="/Photos" render={() => <Photos />} />
       </div>
     </div>
-  )
-}
-export default App
+  );
+};
+export default App;
