@@ -29,19 +29,19 @@ const Dialogues = ({ dialoguesPage, dispatch }) => {
   };
   return (
     <DialoguesContainer>
-      <div>{dialoguesElements}</div>
+      <DialoguesElements>{dialoguesElements}</DialoguesElements>
       <MessagesContainer>{messagesElements}</MessagesContainer>
 
-      <div>
+      <Button>
         <button onClick={addNewMessage}>{i18n.button}</button>
-      </div>
-      <div>
+      </Button>
+      <Textarea>
         <textarea
           placeholder="type new message"
           onChange={onMessageChange}
           value={dialoguesPage.newMessage}
         />
-      </div>
+      </Textarea>
     </DialoguesContainer>
   );
 };
@@ -51,9 +51,10 @@ const DialoguesContainer = styled.div`
   display: grid;
   grid-template-columns: 2fr 10fr;
 `;
-
+const DialoguesElements = styled.div``;
+const Button = styled.div``;
+const Textarea = styled.div``;
 const MessagesContainer = styled.div`
   color: rgb(71, 22, 80);
 `;
-
 export default Dialogues;
