@@ -27,4 +27,11 @@ const dialoguesReducer = (state, action) => {
   }
 }
 
+export const addNewMessageCreateAction = () => ({ type: ADD_NEW_MESSAGE })
+
+export const updateNewPostMessageCreateAction = (text) => ({
+  type: UPDATE_NEW_POST_MESSAGE,
+  messageText: text,
+})
+
 export default dialoguesReducer
