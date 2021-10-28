@@ -1,12 +1,12 @@
-import React from "react";
-import "./App.css";
-import Header from "./components/Header/Header";
-import Navbar from "./components/Navbar/Navbar";
-import Profile from "./components/Profile/Profile";
-import Dialogues from "./components/Dialogues/Dialogues";
-import News from "./components/News/News";
-import Photos from "./components/Photos/Photos";
-import { Route } from "react-router";
+import React from 'react'
+import './App.css'
+import Header from './components/Header/Header'
+import Navbar from './components/Navbar/Navbar'
+import Profile from './components/Profile/Profile'
+import Dialogues from './components/Dialogues/Dialogues'
+import News from './components/News/News'
+import Photos from './components/Photos/Photos'
+import { Route } from 'react-router'
 
 const App = ({ state, dispatch }) => {
   return (
@@ -33,6 +33,6 @@ const App = ({ state, dispatch }) => {
         <Route path="/Photos" render={() => <Photos />} />
       </div>
     </div>
-  );
-};
-export default App;
+  )
+}
+export default App

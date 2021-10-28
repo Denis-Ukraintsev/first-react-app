@@ -7,7 +7,6 @@ const Profile = ({ profilePage, dispatch }) => {
   const i18n = {
     description: 'Ava + Description',
   }
-
   return (
     <Root>
       <ProfileInfo />
