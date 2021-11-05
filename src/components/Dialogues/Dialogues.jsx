@@ -2,12 +2,12 @@ import React from 'react'
 import DialogueItem from './DialogueItem/DialogueItem'
 import Message from './Message/Message'
 import styled from 'styled-components'
-import {
-  addNewMessageCreateAction,
-  updateNewPostMessageCreateAction,
-} from './../redux/dialogues-reducer'
 
-const Dialogues = ({ dialoguesPage, dispatch }) => {
+const Dialogues = ({
+  onAddNewMessage,
+  updateNewPostMessage,
+  dialoguesPage,
+}) => {
   const i18n = {
     button: 'Add new message',
   }
@@ -20,12 +20,12 @@ const Dialogues = ({ dialoguesPage, dispatch }) => {
   ))
 
   const addNewMessage = () => {
-    dispatch(addNewMessageCreateAction())
+    onAddNewMessage()
   }
 
   const onMessageChange = (event) => {
     const text = event.currentTarget.value
-    dispatch(updateNewPostMessageCreateAction(text))
+    updateNewPostMessage(text)
   }
   return (
     <DialoguesContainer>

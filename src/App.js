@@ -3,7 +3,7 @@ import './App.css'
 import Header from './components/Header/Header'
 import Navbar from './components/Navbar/Navbar'
 import Profile from './components/Profile/Profile'
-import Dialogues from './components/Dialogues/Dialogues'
+import DialoguesContainer from './components/Dialogues/DialoguesContainer'
 import News from './components/News/News'
 import Photos from './components/Photos/Photos'
 import { Route } from 'react-router'
@@ -23,7 +23,7 @@ const App = ({ state, dispatch }) => {
         <Route
           path="/Dialogues"
           render={() => (
-            <Dialogues
+            <DialoguesContainer
               dialoguesPage={state.dialoguesPage}
               dispatch={dispatch}
             />
