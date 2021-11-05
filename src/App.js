@@ -8,27 +8,14 @@ import News from './components/News/News'
 import Photos from './components/Photos/Photos'
 import { Route } from 'react-router'
 
-const App = ({ state, dispatch }) => {
+const App = () => {
   return (
     <div className="app-wrapper">
       <Header />
       <Navbar />
       <div className="app-wrapper-content">
-        <Route
-          path="/Profile"
-          render={() => (
-            <Profile profilePage={state.profilePage} dispatch={dispatch} />
-          )}
-        />
-        <Route
-          path="/Dialogues"
-          render={() => (
-            <DialoguesContainer
-              dialoguesPage={state.dialoguesPage}
-              dispatch={dispatch}
-            />
-          )}
-        />
+        <Route path="/Profile" render={() => <Profile />} />
+        <Route path="/Dialogues" render={() => <DialoguesContainer />} />
         <Route path="/News" render={() => <News />} />
         <Route path="/Photos" render={() => <Photos />} />
       </div>

@@ -1,17 +1,17 @@
 import React from 'react'
-import {
-  addPostCreateAction,
-  updateNewPostTextCreateAction,
-} from '../../redux/profile-reducer'
+import { useSelector, useDispatch } from 'react-redux'
 import MyPosts from './MyPosts'
+import { addPost, updateNewPostText } from '../../../features/profileSlice'
 
-const MyPostsContainer = ({ posts, dispatch, newPostText }) => {
+const MyPostsContainer = () => {
+  const dispatch = useDispatch()
+  const { posts, newPostText } = useSelector(({ profile }) => profile)
   const onAddPost = () => {
-    dispatch(addPostCreateAction())
+    dispatch(addPost())
   }
 
   const onPostChange = (text) => {
-    dispatch(updateNewPostTextCreateAction(text))
+    dispatch(updateNewPostText(text))
   }
   return (
     <MyPosts

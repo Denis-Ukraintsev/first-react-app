@@ -3,7 +3,7 @@ import MyPostsContainer from '..//Profile/MyPosts/MyPostsContainer'
 import ProfileInfo from './ProfileInfo/ProfileInfo'
 import styled from 'styled-components'
 
-const Profile = ({ profilePage, dispatch }) => {
+const Profile = () => {
   const i18n = {
     description: 'Ava + Description',
   }
@@ -11,11 +11,7 @@ const Profile = ({ profilePage, dispatch }) => {
     <Root>
       <ProfileInfo />
       <ItemContainer>{i18n.description}</ItemContainer>
-      <MyPostsContainer
-        posts={profilePage.posts}
-        dispatch={dispatch}
-        newPostText={profilePage.newPostText}
-      />
+      <MyPostsContainer />
     </Root>
   )
 }
