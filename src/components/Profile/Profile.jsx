@@ -1,5 +1,5 @@
 import React from 'react'
-import MyPosts from './MyPosts/MyPosts'
+import MyPostsContainer from '..//Profile/MyPosts/MyPostsContainer'
 import ProfileInfo from './ProfileInfo/ProfileInfo'
 import styled from 'styled-components'
 
@@ -11,7 +11,7 @@ const Profile = ({ profilePage, dispatch }) => {
     <Root>
       <ProfileInfo />
       <ItemContainer>{i18n.description}</ItemContainer>
-      <MyPosts
+      <MyPostsContainer
         posts={profilePage.posts}
         dispatch={dispatch}
         newPostText={profilePage.newPostText}

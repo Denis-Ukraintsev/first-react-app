@@ -1,12 +1,8 @@
 import React from 'react'
 import styled from 'styled-components'
 import Post from './Post/Post'
-import {
-  addPostCreateAction,
-  updateNewPostTextCreateAction,
-} from '../../redux/profile-reducer'
 
-const MyPosts = ({ posts, dispatch, newPostText }) => {
+const MyPosts = ({ updateNewPostText, onAddPost, posts, newPostText }) => {
   const i18n = {
     button: 'add post',
     myPosts: 'My posts',
@@ -17,12 +13,12 @@ const MyPosts = ({ posts, dispatch, newPostText }) => {
   ))
 
   const addPost = () => {
-    dispatch(addPostCreateAction())
+    onAddPost()
   }
 
   const onPostChange = (event) => {
     const text = event.currentTarget.value
-    dispatch(updateNewPostTextCreateAction(text))
+    updateNewPostText(text)
   }
   return (
     <div>
