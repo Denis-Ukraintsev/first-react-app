@@ -6,16 +6,18 @@ import styled from 'styled-components'
 const Dialogues = ({
   onAddNewMessage,
   updateNewPostMessage,
-  dialoguesPage,
+  dialogues,
+  messages,
+  newMessage,
 }) => {
   const i18n = {
     button: 'Add new message',
   }
-  const dialoguesElements = dialoguesPage.dialogues.map((d) => (
+  const dialoguesElements = dialogues.map((d) => (
     <DialogueItem name={d.name} id={d.id} avatar={d.avatar} />
   ))
 
-  const messagesElements = dialoguesPage.messages.map((m) => (
+  const messagesElements = messages.map((m) => (
     <Message message={m.message} id={m.id} />
   ))
 
@@ -37,9 +39,9 @@ const Dialogues = ({
       </Button>
       <Textarea>
         <textarea
-          placeholder="type new message"
+          placeholder="type new message here"
           onChange={onMessageChange}
-          value={dialoguesPage.newMessage}
+          value={newMessage}
         />
       </Textarea>
     </DialoguesContainer>
@@ -53,7 +55,9 @@ const DialoguesContainer = styled.div`
 `
 const DialoguesElements = styled.div``
 const Button = styled.div``
-const Textarea = styled.div``
+const Textarea = styled.div`
+  padding-left: 13px;
+`
 const MessagesContainer = styled.div`
   color: rgb(71, 22, 80);
 `

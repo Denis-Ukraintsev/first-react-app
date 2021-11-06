@@ -6,7 +6,7 @@ const initialState = {
     { id: 2, message: "It's my first post", likeCount: 20 },
     { id: 3, message: 'Wow, amazing site', likeCount: 21 },
   ],
-  newPostText: 'den.from.ozzzz',
+  newPostText: '',
 }
 
 const profileSlice = createSlice({
@@ -21,6 +21,7 @@ const profileSlice = createSlice({
           likeCount: 5,
         }
         state.posts.push(newPost)
+        state.newPostText = ''
       }
     },
     updateNewPostText: (state, action) => {

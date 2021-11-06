@@ -24,7 +24,11 @@ const MyPosts = ({ updateNewPostText, onAddPost, posts, newPostText }) => {
     <div>
       <ItemContainer>{i18n.myPosts}</ItemContainer>
       <div>
-        <textarea onChange={onPostChange} value={newPostText} />
+        <textarea
+          onChange={onPostChange}
+          value={newPostText}
+          placeholder="type new post here"
+        />
       </div>
       <button onClick={addPost}>{i18n.button}</button>
       <div>{postsElements}</div>

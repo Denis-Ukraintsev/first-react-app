@@ -1,23 +1,30 @@
 import React from 'react'
-import {
-  addNewMessageCreateAction,
-  updateNewPostMessageCreateAction,
-} from '../redux/dialogues-reducer'
+import { useSelector, useDispatch } from 'react-redux'
 import Dialogues from './Dialogues'
+import {
+  addNewMessage,
+  updateNewPostMessage,
+} from '../../features/dialogueSlice'
 
-const DialoguesContainer = ({ dialoguesPage, dispatch }) => {
-  const addNewMessage = () => {
-    dispatch(addNewMessageCreateAction())
+const DialoguesContainer = () => {
+  const dispatch = useDispatch()
+  const { dialogues, messages, newMessage } = useSelector(
+    ({ dialoguesPage }) => dialoguesPage
+  )
+  const onAddNewMessage = () => {
+    dispatch(addNewMessage())
   }
 
   const onMessageChange = (text) => {
-    dispatch(updateNewPostMessageCreateAction(text))
+    dispatch(updateNewPostMessage(text))
   }
   return (
     <Dialogues
-      onAddNewMessage={addNewMessage}
+      onAddNewMessage={onAddNewMessage}
       updateNewPostMessage={onMessageChange}
-      dialoguesPage={dialoguesPage}
+      dialogues={dialogues}
+      messages={messages}
+      newMessage={newMessage}
     />
   )
 }

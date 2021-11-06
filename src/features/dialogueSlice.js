@@ -1,5 +1,4 @@
-const ADD_NEW_MESSAGE = 'ADD-NEW-MESSAGE'
-const UPDATE_NEW_POST_MESSAGE = 'UPDATE-NEW-POST-MESSAGE'
+import { createSlice } from '@reduxjs/toolkit'
 
 const initialState = {
   dialogues: [
@@ -37,37 +36,25 @@ const initialState = {
   newMessage: '',
 }
 
-const dialoguesReducer = (state = initialState, action) => {
-  switch (action.type) {
-    case ADD_NEW_MESSAGE: {
-      const newPostMessage = {
-        id: 4,
-        message: state.newMessage,
-      }
+const dilaogueSlice = createSlice({
+  name: 'dialogue',
+  initialState,
+  reducers: {
+    addNewMessage: (state) => {
+      if (state.newMessage) {
+        const newPostMessage = {
+          id: state.messages.length + 1,
+          message: state.newMessage,
+        }
 
-      return {
-        ...state,
-        messages: [...state.messages, newPostMessage],
-        newMessage: '',
+        state.messages.push(newPostMessage)
+        state.newMessage = ''
       }
-    }
-    case UPDATE_NEW_POST_MESSAGE: {
-      return {
-        ...state,
-        newMessage: action.messageText,
-      }
-    }
-    default: {
-      return state
-    }
-  }
-}
-
-export const addNewMessageCreateAction = () => ({ type: ADD_NEW_MESSAGE })
-
-export const updateNewPostMessageCreateAction = (text) => ({
-  type: UPDATE_NEW_POST_MESSAGE,
-  messageText: text,
+    },
+    updateNewPostMessage: (state, action) => {
+      state.newMessage = action.payload
+    },
+  },
 })
-
-export default dialoguesReducer
+export const { addNewMessage, updateNewPostMessage } = dilaogueSlice.actions
+export default dilaogueSlice.reducer
