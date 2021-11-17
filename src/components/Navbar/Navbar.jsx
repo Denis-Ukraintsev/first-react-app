@@ -1,14 +1,15 @@
-import React from "react";
-import { NavLink } from "react-router-dom";
-import styled from "styled-components";
+import React from 'react'
+import { NavLink } from 'react-router-dom'
+import styled from 'styled-components'
 
 const Navbar = () => {
   const i18n = {
-    profile: "Profile",
-    messages: "Dialogues",
-    news: "News",
-    photos: "Photos"
-  };
+    profile: 'Profile',
+    messages: 'Dialogues',
+    news: 'News',
+    photos: 'Photos',
+    users: 'Users',
+  }
 
   return (
     <MenuContainer>
@@ -36,25 +37,31 @@ const Navbar = () => {
         </NavLink>
       </MenuItem>
       <br />
+      <MenuItem>
+        <NavLink to="/Users" activeStyle={activeStyles}>
+          {i18n.users}
+        </NavLink>
+      </MenuItem>
+      <br />
     </MenuContainer>
-  );
-};
+  )
+}
 
 const MenuItem = styled.div`
   a {
     color: rgb(240, 216, 236);
     text-decoration: none;
   }
-`;
+`
 const MenuContainer = styled.nav`
   grid-area: n;
   background: linear-gradient(to right, rgb(87, 87, 148), pink);
   border-radius: 5px;
   padding: 5px;
-`;
+`
 
 const activeStyles = {
-  color: "brown"
-};
+  color: 'brown',
+}
 
-export default Navbar;
+export default Navbar
