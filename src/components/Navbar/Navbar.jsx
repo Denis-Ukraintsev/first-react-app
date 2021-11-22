@@ -54,8 +54,10 @@ const MenuItem = styled.div`
   }
 `
 const MenuContainer = styled.nav`
-  grid-area: n;
+  display: flex;
+  flex-direction: column;
   background: linear-gradient(to right, rgb(87, 87, 148), pink);
+  width: 70px;
   border-radius: 5px;
   padding: 5px;
 `
