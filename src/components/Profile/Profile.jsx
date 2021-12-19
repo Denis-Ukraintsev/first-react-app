@@ -1,5 +1,5 @@
 import React from 'react'
-import MyPostsContainer from '..//Profile/MyPosts/MyPostsContainer'
+import MyPosts from '..//Profile/MyPosts/MyPosts'
 import styled from 'styled-components'
 
 const Profile = () => {
@@ -10,7 +10,7 @@ const Profile = () => {
     <Root>
       <Img img src="https://images4.alphacoders.com/697/697728.jpg" />
       <ItemContainer>{i18n.description}</ItemContainer>
-      <MyPostsContainer />
+      <MyPosts />
     </Root>
   )
 }
