@@ -2,14 +2,30 @@ import React from 'react'
 import DialogueItem from './DialogueItem/DialogueItem'
 import Message from './Message/Message'
 import styled from 'styled-components'
-
-const Dialogues = ({
-  onAddNewMessage,
+import { useSelector, useDispatch } from 'react-redux'
+import {
+  addNewMessage,
   updateNewPostMessage,
-  dialogues,
-  messages,
-  newMessage,
-}) => {
+} from '../../features/dialogueSlice'
+
+const Dialogues = () => {
+  const dispatch = useDispatch()
+  const { dialogues, messages, newMessage } = useSelector(
+    ({ dialoguesPage }) => dialoguesPage
+  )
+  const onAddNewMessage = () => {
+    dispatch(addNewMessage())
+  }
+
+  const onMessageChange = (text) => {
+    dispatch(updateNewPostMessage(text))
+  }
+
+  const MessageChange = (event) => {
+    const text = event.currentTarget.value
+    onMessageChange(text)
+  }
+
   const i18n = {
     button: 'Add new message',
   }
@@ -21,34 +37,26 @@ const Dialogues = ({
     <Message message={m.message} id={m.id} />
   ))
 
-  const addNewMessage = () => {
-    onAddNewMessage()
-  }
-
-  const onMessageChange = (event) => {
-    const text = event.currentTarget.value
-    updateNewPostMessage(text)
-  }
   return (
-    <DialoguesContainer>
+    <Root>
       <DialoguesElements>{dialoguesElements}</DialoguesElements>
-      <MessagesContainer>{messagesElements}</MessagesContainer>
+      <MessagesElements>{messagesElements}</MessagesElements>
 
       <Button>
-        <button onClick={addNewMessage}>{i18n.button}</button>
+        <button onClick={onAddNewMessage}>{i18n.button}</button>
       </Button>
       <Textarea>
         <textarea
           placeholder="type new message here"
-          onChange={onMessageChange}
+          onChange={MessageChange}
           value={newMessage}
         />
       </Textarea>
-    </DialoguesContainer>
+    </Root>
   )
 }
 
-const DialoguesContainer = styled.div`
+const Root = styled.div`
   color: rgb(23, 88, 104);
   display: grid;
   grid-template-columns: 2fr 10fr;
@@ -58,7 +66,7 @@ const Button = styled.div``
 const Textarea = styled.div`
   padding-left: 13px;
 `
-const MessagesContainer = styled.div`
+const MessagesElements = styled.div`
   color: rgb(71, 22, 80);
 `
 export default Dialogues

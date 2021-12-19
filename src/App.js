@@ -2,7 +2,7 @@ import React from 'react'
 import Header from './components/Header/Header'
 import Navbar from './components/Navbar/Navbar'
 import Profile from './components/Profile/Profile'
-import DialoguesContainer from './components/Dialogues/DialoguesContainer'
+import Dialogues from './components/Dialogues/Dialogues'
 import News from './components/News/News'
 import Photos from './components/Photos/Photos'
 import Users from './components/Users/Users'
@@ -17,7 +17,7 @@ const App = () => {
       <NavbarWrapper>
         <Navbar />
         <Route path="/Profile" render={() => <Profile />} />
-        <Route path="/Dialogues" render={() => <DialoguesContainer />} />
+        <Route path="/Dialogues" render={() => <Dialogues />} />
         <Route path="/News" render={() => <News />} />
         <Route path="/Photos" render={() => <Photos />} />
         <Route path="/Users" render={() => <Users />} />
