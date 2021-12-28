@@ -11,17 +11,25 @@ import './App.css'
 import styled from 'styled-components'
 
 const App = () => {
+  const isShowLoginModal = false
   return (
     <Root>
       <Header />
-      <NavbarWrapper>
+      <AppWrapper>
         <Navbar />
-        <Route path="/Profile" render={() => <Profile />} />
-        <Route path="/Dialogues" render={() => <Dialogues />} />
-        <Route path="/News" render={() => <News />} />
-        <Route path="/Photos" render={() => <Photos />} />
-        <Route path="/Users" render={() => <Users />} />
-      </NavbarWrapper>
+        <ContentWrapper>
+          <Route path="/Profile" render={() => <Profile />} />
+          <Route path="/Dialogues" render={() => <Dialogues />} />
+          <Route path="/News" render={() => <News />} />
+          <Route path="/Photos" render={() => <Photos />} />
+          <Route path="/Users" render={() => <Users />} />
+        </ContentWrapper>
+      </AppWrapper>
+      {isShowLoginModal && (
+        <LoginModalWrapper>
+          <LoginModal />
+        </LoginModalWrapper>
+      )}
     </Root>
   )
 }
@@ -29,7 +37,30 @@ const Root = styled.div`
   display: flex;
   flex-direction: column;
 `
-const NavbarWrapper = styled.div`
+const LoginModalWrapper = styled.div`
   display: flex;
+  justify-content: center;
+  align-items: center;
+  flex: 1;
+  position: absolute;
+  top: 0;
+  left: 0;
+  background-color: rgba(0, 0, 0, 0.2);
+  height: 100%;
+  width: 100%;
+`
+const LoginModal = styled.div`
+  display: flex;
+  flex-direction: column;
+  width: 400px;
+  height: 350px;
+  background-color: #fff;
+  border-radius: 15px;
+`
+const AppWrapper = styled.div`
+  display: flex;
+`
+const ContentWrapper = styled.div`
+  overflow-y: auto;
 `
 export default App

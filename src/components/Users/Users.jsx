@@ -1,7 +1,7 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import styled from 'styled-components'
 import { useSelector, useDispatch } from 'react-redux'
-import { follow, unfollow } from '../../features/userSlice'
+import { follow, fetchUsers } from '../../features/userSlice'
 
 const Users = () => {
   const dispatch = useDispatch()
@@ -10,17 +10,23 @@ const Users = () => {
     follow: 'follow',
     unfollow: 'unfollow',
   }
-  const handleFollowBtn = (id, followed) => {
-    dispatch(followed ? unfollow(id) : follow(id))
+
+  useEffect(() => {
+    dispatch(fetchUsers())
+  }, [])
+
+  const handleFollowBtn = (id) => {
+    dispatch(follow(id))
   }
+
   return (
     <Root>
-      {users.map(({ id, fullName, followed }) => (
+      {users.map(({ id, name, followed }) => (
         <User key={id}>
-          {fullName}
+          {name}
           <Button
             onClick={() => {
-              handleFollowBtn(id, followed)
+              handleFollowBtn(id)
             }}
           >
             {!followed ? i18n.follow : i18n.unfollow}
@@ -31,7 +37,9 @@ const Users = () => {
   )
 }
 
-const Root = styled.div``
+const Root = styled.div`
+  /* overflow-y: auto; */
+`
 const User = styled.div`
   display: flex;
   flex-direction: column;

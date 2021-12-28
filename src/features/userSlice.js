@@ -1,34 +1,35 @@
-import { createSlice } from '@reduxjs/toolkit'
+import { createSlice, createAsyncThunk } from '@reduxjs/toolkit'
+import { usersApi } from '../api/api'
+
+export const fetchUsers = createAsyncThunk(
+  'users/fetchUsers',
+  async (_, { dispatch }) => {
+    const response = await usersApi.getUsers()
+    dispatch(setUsers(response?.data?.items))
+  }
+)
 
 const initialState = {
-  users: [
-    { id: 1, followed: false, fullName: 'Denis', activity: 'model' },
-    { id: 2, followed: false, fullName: 'Julia', activity: 'photographer' },
-    { id: 3, followed: false, fullName: 'Lutsius', activity: 'model' },
-  ],
+  users: [],
 }
 
 const userSlice = createSlice({
-  name: 'user',
+  name: 'users',
   initialState,
   reducers: {
     follow: (state, action) => {
+      // type: 'users/follow'
       for (let i = 0; i < state.users.length; i++) {
         if (state.users[i].id === action.payload) {
-          state.users[i].followed = true
+          state.users[i].followed = !state.users[i].followed
         }
       }
     },
-    unfollow: (state, action) => {
-      for (let i = 0; i < state.users.length; i++) {
-        if (state.users[i].id === action.payload) {
-          state.users[i].followed = false
-        }
-      }
+    setUsers: (state, action) => {
+      state.users.push(...action.payload)
     },
-    setUser: () => {},
   },
 })
 
-export const { follow, unfollow, setUser } = userSlice.actions
+export const { follow, setUsers } = userSlice.actions
 export default userSlice.reducer

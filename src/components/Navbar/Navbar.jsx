@@ -60,6 +60,7 @@ const MenuContainer = styled.nav`
   width: 70px;
   border-radius: 5px;
   padding: 5px;
+  height: calc(100vh-70px);
 `
 
 const activeStyles = {
