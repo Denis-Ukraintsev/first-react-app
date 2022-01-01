@@ -37,9 +37,7 @@ const Users = () => {
   )
 }
 
-const Root = styled.div`
-  /* overflow-y: auto; */
-`
+const Root = styled.div``
 const User = styled.div`
   display: flex;
   flex-direction: column;

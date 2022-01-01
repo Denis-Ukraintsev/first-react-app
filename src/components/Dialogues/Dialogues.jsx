@@ -44,25 +44,28 @@ const Dialogues = () => {
 
       <Button>
         <button onClick={onAddNewMessage}>{i18n.button}</button>
+        <Textarea>
+          <textarea
+            placeholder="type new message here"
+            onChange={MessageChange}
+            value={newMessage}
+          />
+        </Textarea>
       </Button>
-      <Textarea>
-        <textarea
-          placeholder="type new message here"
-          onChange={MessageChange}
-          value={newMessage}
-        />
-      </Textarea>
     </Root>
   )
 }
 
 const Root = styled.div`
   color: rgb(23, 88, 104);
-  display: grid;
-  grid-template-columns: 2fr 10fr;
+  display: flex;
 `
+
 const DialoguesElements = styled.div``
-const Button = styled.div``
+const Button = styled.div`
+  display: flex;
+  align-items: flex-end;
+`
 const Textarea = styled.div`
   padding-left: 13px;
 `

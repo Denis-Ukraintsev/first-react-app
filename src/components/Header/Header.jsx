@@ -13,13 +13,8 @@ const HeaderContainer = styled.header`
   background-color: rgb(170, 111, 180);
   border-radius: 5px;
   height: 70px;
-  width: 1200px;
+  width: 100%;
   opacity: 0.8;
-  /* width: 1200px;
-  grid-area: h;
-  background-color: rgb(170, 111, 180);
-  border-radius: 5px;
-  opacity: 0.8; */
 `
 
 const HeaderImg = styled.img`

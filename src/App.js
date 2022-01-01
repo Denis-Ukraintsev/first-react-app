@@ -33,6 +33,7 @@ const App = () => {
     </Root>
   )
 }
+
 const Root = styled.div`
   display: flex;
   flex-direction: column;
@@ -58,9 +59,15 @@ const LoginModal = styled.div`
   border-radius: 15px;
 `
 const AppWrapper = styled.div`
+  position: absolute;
+  top: 70px;
+  right: 0;
+  bottom: 0;
+  left: 0;
   display: flex;
 `
 const ContentWrapper = styled.div`
-  overflow-y: auto;
+  flex: 1;
+  overflow-y: scroll;
 `
 export default App

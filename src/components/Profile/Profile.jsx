@@ -8,7 +8,10 @@ const Profile = () => {
   }
   return (
     <Root>
-      <Img img src="https://images4.alphacoders.com/697/697728.jpg" />
+      <Img
+        img
+        src="https://images.wallpaperscraft.ru/image/single/gory_ozero_vershiny_129263_2560x1440.jpg"
+      />
       <ItemContainer>{i18n.description}</ItemContainer>
       <MyPosts />
     </Root>
@@ -25,7 +28,7 @@ const ItemContainer = styled.div`
   padding: 5px;
 `
 const Img = styled.img`
-  width: 1110px;
+  width: 1100px;
   height: 500px;
   border-radius: 5px;
 `
