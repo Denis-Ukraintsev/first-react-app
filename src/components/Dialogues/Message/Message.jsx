@@ -10,7 +10,7 @@ const Message = (props) => {
 }
 
 const MessageContainer = styled.div`
-  padding: 8px;
+  padding: 5px;
   margin: 7px;
   li {
     display: list-item;

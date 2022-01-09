@@ -67,6 +67,7 @@ const AppWrapper = styled.div`
   display: flex;
 `
 const ContentWrapper = styled.div`
+  display: flex;
   flex: 1;
   overflow-y: scroll;
 `

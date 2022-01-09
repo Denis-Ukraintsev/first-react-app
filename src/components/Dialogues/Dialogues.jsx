@@ -39,9 +39,10 @@ const Dialogues = () => {
 
   return (
     <Root>
-      <DialoguesElements>{dialoguesElements}</DialoguesElements>
-      <MessagesElements>{messagesElements}</MessagesElements>
-
+      <ContentWrapper>
+        <DialoguesElements>{dialoguesElements}</DialoguesElements>
+        <MessagesElements>{messagesElements}</MessagesElements>
+      </ContentWrapper>
       <Button>
         <button onClick={onAddNewMessage}>{i18n.button}</button>
         <Textarea>
@@ -59,17 +60,32 @@ const Dialogues = () => {
 const Root = styled.div`
   color: rgb(23, 88, 104);
   display: flex;
+  flex-direction: column;
+  padding: 5px;
+  align-items: flex-start;
 `
 
-const DialoguesElements = styled.div``
-const Button = styled.div`
+const ContentWrapper = styled.div`
   display: flex;
-  align-items: flex-end;
 `
-const Textarea = styled.div`
-  padding-left: 13px;
+
+const DialoguesElements = styled.div`
+  display: flex;
+  flex-direction: column;
 `
+
 const MessagesElements = styled.div`
   color: rgb(71, 22, 80);
+  display: flex;
+  flex-direction: column;
 `
+
+const Button = styled.div`
+  display: flex;
+`
+const Textarea = styled.div`
+  display: flex;
+  padding-left: 13px;
+`
+
 export default Dialogues
