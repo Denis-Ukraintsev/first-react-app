@@ -1,7 +1,7 @@
 import React, { useEffect } from 'react'
 import styled from 'styled-components'
 import { useSelector, useDispatch } from 'react-redux'
-import { follow, fetchUsers } from '../../features/userSlice'
+import { follow, fetchUsers } from '../../redux/features/userSlice'
 
 const Users = () => {
   const dispatch = useDispatch()

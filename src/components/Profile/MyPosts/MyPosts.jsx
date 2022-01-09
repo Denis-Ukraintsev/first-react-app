@@ -2,7 +2,10 @@ import React from 'react'
 import styled from 'styled-components'
 import Post from './Post/Post'
 import { useSelector, useDispatch } from 'react-redux'
-import { addPost, updateNewPostText } from '../../../features/profileSlice'
+import {
+  addPost,
+  updateNewPostText,
+} from '../../../redux/features/profileSlice'
 
 const MyPosts = () => {
   const dispatch = useDispatch()

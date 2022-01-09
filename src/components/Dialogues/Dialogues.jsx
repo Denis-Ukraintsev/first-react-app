@@ -6,7 +6,7 @@ import { useSelector, useDispatch } from 'react-redux'
 import {
   addNewMessage,
   updateNewPostMessage,
-} from '../../features/dialogueSlice'
+} from '../../redux/features/dialogueSlice'
 
 const Dialogues = () => {
   const dispatch = useDispatch()
