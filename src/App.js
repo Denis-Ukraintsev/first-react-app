@@ -6,6 +6,7 @@ import Dialogues from './components/Dialogues/Dialogues'
 import News from './components/News/News'
 import Photos from './components/Photos/Photos'
 import Users from './components/Users/Users'
+import LoginModal from './components/LoginModal'
 import { Route } from 'react-router'
 import './App.css'
 import styled from 'styled-components'
@@ -23,6 +24,7 @@ const App = () => {
           <Route path="/News" render={() => <News />} />
           <Route path="/Photos" render={() => <Photos />} />
           <Route path="/Users" render={() => <Users />} />
+          <Route path="/LoginModal" render={() => <LoginModal />} />
         </ContentWrapper>
       </AppWrapper>
       {isShowLoginModal && (
@@ -50,14 +52,14 @@ const LoginModalWrapper = styled.div`
   height: 100%;
   width: 100%;
 `
-const LoginModal = styled.div`
-  display: flex;
-  flex-direction: column;
-  width: 400px;
-  height: 350px;
-  background-color: #fff;
-  border-radius: 15px;
-`
+// const LoginModal = styled.div`
+//   display: flex;
+//   flex-direction: column;
+//   width: 400px;
+//   height: 350px;
+//   background-color: #fff;
+//   border-radius: 15px;
+// `
 const AppWrapper = styled.div`
   position: absolute;
   top: 70px;
