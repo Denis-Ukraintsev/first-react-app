@@ -11,6 +11,9 @@ export const fetchUsers = createAsyncThunk(
 
 const initialState = {
   users: [],
+  pageSize: 5,
+  totalUsersCount: 20,
+  currentPage: 1,
 }
 
 const userSlice = createSlice({

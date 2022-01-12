@@ -6,6 +6,10 @@ import { follow, fetchUsers } from '../../redux/features/userSlice'
 const Users = () => {
   const dispatch = useDispatch()
   const users = useSelector(({ usersPage }) => usersPage.users)
+  const pageSize = useSelector(({ usersPage }) => usersPage.pageSize)
+  const totalUsersCount = useSelector(
+    ({ usersPage }) => usersPage.totalUsersCount
+  )
   const i18n = {
     follow: 'follow',
     unfollow: 'unfollow',
@@ -19,8 +23,19 @@ const Users = () => {
     dispatch(follow(id))
   }
 
+  const pagesCount = Math.ceil(totalUsersCount / pageSize)
+  const pages = []
+
+  for (let i = 1; i <= pagesCount; i++) {
+    pages.push(i)
+  }
+
   return (
     <Root>
+      {pages.map((p) => {
+        return <span>{p}</span>
+      })}
+
       {users.map(({ id, name, followed }) => (
         <User key={id}>
           {name}
