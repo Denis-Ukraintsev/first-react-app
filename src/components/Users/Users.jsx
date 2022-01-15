@@ -5,11 +5,10 @@ import { follow, fetchUsers } from '../../redux/features/userSlice'
 
 const Users = () => {
   const dispatch = useDispatch()
-  const users = useSelector(({ usersPage }) => usersPage.users)
-  const pageSize = useSelector(({ usersPage }) => usersPage.pageSize)
-  const totalUsersCount = useSelector(
-    ({ usersPage }) => usersPage.totalUsersCount
+  const { users, pageSize, totalUsersCount } = useSelector(
+    ({ usersPage }) => usersPage
   )
+
   const i18n = {
     follow: 'follow',
     unfollow: 'unfollow',
@@ -33,7 +32,7 @@ const Users = () => {
   return (
     <Root>
       {pages.map((p) => {
-        return <span>{p}</span>
+        return <Span>{p}</Span>
       })}
 
       {users.map(({ id, name, followed }) => (
@@ -59,6 +58,18 @@ const User = styled.div`
   width: 200px;
   height: 100px;
 `
-const Button = styled.button``
+const Button = styled.button`
+  border-radius: 5px;
+  &:active {
+    color: brown;
+  }
+`
+
+const Span = styled.span`
+  margin: 5px;
+  &:active {
+    color: brown;
+  }
+`
 
 export default Users

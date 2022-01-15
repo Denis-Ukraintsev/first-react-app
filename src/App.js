@@ -8,7 +8,6 @@ import Photos from './components/Photos/Photos'
 import Users from './components/Users/Users'
 import LoginModal from './components/LoginModal'
 import { Route } from 'react-router'
-import './App.css'
 import styled from 'styled-components'
 
 const App = () => {
