@@ -9,28 +9,35 @@ import Users from './components/Users/Users'
 import LoginModal from './components/LoginModal'
 import { Route } from 'react-router'
 import styled from 'styled-components'
+import { useSelector } from 'react-redux'
 
 const App = () => {
-  const isShowLoginModal = false
+  const { isShowLoginModal } = useSelector(({ auth }) => auth)
+
   return (
     <Root>
       <Header />
       <AppWrapper>
         <Navbar />
         <ContentWrapper>
-          <Route path="/Profile" render={() => <Profile />} />
-          <Route path="/Dialogues" render={() => <Dialogues />} />
-          <Route path="/News" render={() => <News />} />
-          <Route path="/Photos" render={() => <Photos />} />
-          <Route path="/Users" render={() => <Users />} />
-          <Route path="/LoginModal" render={() => <LoginModal />} />
+          <Route path="/Profile">
+            <Profile />
+          </Route>
+          <Route path="/Dialogues">
+            <Dialogues />
+          </Route>
+          <Route path="/News">
+            <News />
+          </Route>
+          <Route path="/Photos">
+            <Photos />
+          </Route>
+          <Route path="/Users">
+            <Users />
+          </Route>
         </ContentWrapper>
       </AppWrapper>
-      {isShowLoginModal && (
-        <LoginModalWrapper>
-          <LoginModal />
-        </LoginModalWrapper>
-      )}
+      {isShowLoginModal && <LoginModal />}
     </Root>
   )
 }
@@ -38,34 +45,12 @@ const App = () => {
 const Root = styled.div`
   display: flex;
   flex-direction: column;
-`
-const LoginModalWrapper = styled.div`
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  flex: 1;
-  position: absolute;
-  top: 0;
-  left: 0;
-  background-color: rgba(0, 0, 0, 0.2);
-  height: 100%;
   width: 100%;
+  height: 100vh;
 `
-// const LoginModal = styled.div`
-//   display: flex;
-//   flex-direction: column;
-//   width: 400px;
-//   height: 350px;
-//   background-color: #fff;
-//   border-radius: 15px;
-// `
 const AppWrapper = styled.div`
-  position: absolute;
-  top: 70px;
-  right: 0;
-  bottom: 0;
-  left: 0;
   display: flex;
+  height: calc(100vh - 70px);
 `
 const ContentWrapper = styled.div`
   display: flex;
