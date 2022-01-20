@@ -1,7 +1,7 @@
 import React from 'react'
 import styled from 'styled-components'
 import { useDispatch } from 'react-redux'
-import { setIsShowLoginModal } from '../redux/features/authSlice'
+import { setIsShowLoginModal } from '..//../redux/features/authSlice'
 
 const LoginModal = () => {
   const i18n = {
