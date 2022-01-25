@@ -16,7 +16,7 @@ const Users = () => {
 
   useEffect(() => {
     dispatch(fetchUsers())
-  }, [])
+  }, [dispatch])
 
   const handleFollowBtn = (id) => {
     dispatch(follow(id))
@@ -33,9 +33,9 @@ const Users = () => {
     <Root>
       {pages.map((p) => {
         if (currentPage === p) {
-          return <SpanSelected>{p}</SpanSelected>
+          return <SpanSelected key={`pageNumber_${p}`}>{p}</SpanSelected>
         } else {
-          return <Span>{p}</Span>
+          return <Span key={`pageNumber_${p}`}>{p}</Span>
         }
       })}
 

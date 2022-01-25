@@ -1,22 +1,38 @@
-import React from 'react'
+import React, { useState } from 'react'
 import styled from 'styled-components'
 import { useDispatch } from 'react-redux'
-import { setIsShowLoginModal } from '..//../redux/features/authSlice'
+import { signIn, signOut } from '../../redux/features/authSlice'
 
 const LoginModal = () => {
-  const i18n = {
-    login: 'login',
-    password: 'password',
-    button: 'accept',
-  }
+  const [login, setLogin] = useState('den.from.oz@gmail.com')
+  const [password, setPassword] = useState('')
+
   const dispatch = useDispatch()
   const handleSignIn = () => {
-    dispatch(setIsShowLoginModal(false))
+    dispatch(signIn({ login, password }))
   }
+  const handleSignOut = () => {
+    dispatch(signOut())
+  }
+
   return (
     <LoginModalOverlay>
       <Modal>
-        <button onClick={handleSignIn}>Sign In</button>
+        <StyledInput
+          value={login}
+          onChange={(event) => {
+            setLogin(event.target.value)
+          }}
+        />
+        <StyledInput
+          type="password"
+          value={password}
+          onChange={(event) => {
+            setPassword(event.target.value)
+          }}
+        />
+        <LoginButton onClick={handleSignIn}>Sign In</LoginButton>
+        <LoginButton onClick={handleSignOut}>Sign Out</LoginButton>
       </Modal>
     </LoginModalOverlay>
   )
@@ -44,6 +60,20 @@ const LoginModalOverlay = styled.div`
   background-color: rgba(0, 0, 0, 0.2);
   height: 100%;
   width: 100%;
+`
+const LoginButton = styled.button`
+  height: 40px;
+  width: 160px;
+  border-radius: 8px;
+  border: 1px solid #706e83;
+`
+const StyledInput = styled.input`
+  height: 20px;
+  width: 160px;
+  border-radius: 8px;
+  margin-bottom: 10px;
+  padding-left: 8px;
+  border: 1px solid #706e83;
 `
 
 export default LoginModal

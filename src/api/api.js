@@ -15,3 +15,20 @@ export const usersApi = {
       .then((response) => response)
   },
 }
+export const authApi = {
+  signIn(login, password) {
+    return instance
+      .post(`/auth/login`, {
+        email: login,
+        password,
+        rememberMe: true,
+      })
+      .then((response) => response)
+  },
+  signOut() {
+    return instance.delete(`/auth/login`).then((response) => response)
+  },
+  authMe() {
+    return instance.get(`/auth/me`).then((response) => response)
+  },
+}
