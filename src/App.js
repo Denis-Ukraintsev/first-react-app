@@ -7,6 +7,7 @@ import News from './components/News/News'
 import Photos from './components/Photos/Photos'
 import Users from './components/Users/Users'
 import LoginModal from './components/LoginModal/LoginModal'
+import ErrorAlert from './components/LoginModal/ErrorAlert'
 import { Route } from 'react-router'
 import styled from 'styled-components'
 import { useSelector, useDispatch } from 'react-redux'
@@ -14,13 +15,18 @@ import { authMe } from './redux/features/authSlice'
 import spinner from './assets/spinner.gif'
 
 const App = () => {
+  const { isShowLoginModal, isInitialized, isShowSharedError } = useSelector(
+    ({ auth, shared }) => ({
+      isShowLoginModal: auth.isShowLoginModal,
+      isInitialized: auth.isInitialized,
+      isShowSharedError: shared.isShowSharedError,
+    })
+  )
   const dispatch = useDispatch()
 
   useEffect(() => {
     dispatch(authMe())
   }, [dispatch])
-
-  const { isShowLoginModal, isInitialized } = useSelector(({ auth }) => auth)
 
   if (!isInitialized) {
     return (
@@ -54,6 +60,7 @@ const App = () => {
         </ContentWrapper>
       </AppWrapper>
       {isShowLoginModal && <LoginModal />}
+      {isShowSharedError && <ErrorAlert />}
     </Root>
   )
 }

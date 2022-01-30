@@ -1,5 +1,6 @@
 import { createSlice, createAsyncThunk } from '@reduxjs/toolkit'
 import { authApi } from '../../api/api'
+import { setSharedError, setShowSharedError } from './sharedSlice'
 
 export const signIn = createAsyncThunk(
   'auth/signIn',
@@ -7,6 +8,9 @@ export const signIn = createAsyncThunk(
     const response = await authApi.signIn(login, password)
     if (response.data.resultCode === 0) {
       dispatch(setIsShowLoginModal(false))
+    } else {
+      dispatch(setSharedError(response.data.messages[0]))
+      dispatch(setShowSharedError())
     }
   }
 )
