@@ -3,16 +3,18 @@ import { usersApi } from '../../api/api'
 
 export const fetchUsers = createAsyncThunk(
   'users/fetchUsers',
-  async (_, { dispatch }) => {
-    const response = await usersApi.getUsers()
+  async ({ pageNumber }, { dispatch }) => {
+    const response = await usersApi.getUsers(pageNumber, 20)
+
     dispatch(setUsers(response?.data?.items))
+    dispatch(setTotalCount(response?.data?.totalCount))
   }
 )
 
 const initialState = {
   users: [],
-  pageSize: 5,
-  totalUsersCount: 20,
+  pageSize: 20,
+  totalCount: 0,
   currentPage: 1,
 }
 
@@ -29,10 +31,17 @@ const userSlice = createSlice({
       }
     },
     setUsers: (state, action) => {
-      state.users = action.payload
+      state.users.push(...action.payload)
+    },
+    setTotalCount: (state, action) => {
+      state.totalCount = action.payload
+    },
+    setCurrentPage: (state, action) => {
+      state.currentPage = action.payload
     },
   },
 })
 
-export const { follow, setUsers, setCurrentPage } = userSlice.actions
+export const { follow, setUsers, setTotalCount, setCurrentPage } =
+  userSlice.actions
 export default userSlice.reducer
