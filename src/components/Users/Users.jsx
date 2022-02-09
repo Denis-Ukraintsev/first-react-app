@@ -8,6 +8,7 @@ import {
 } from '../../redux/features/usersSlice'
 import InfiniteScroll from 'react-infinite-scroll-component'
 import spinner from '../../assets/spinner.gif'
+import UserAva from './UserAva'
 
 const Users = () => {
   const dispatch = useDispatch()
@@ -26,15 +27,18 @@ const Users = () => {
     dispatch(follow(id))
   }
 
-  const usersArray = users.map(({ id, name, followed }) => (
-    <User key={id}>
-      {name}
+  const usersArray = users.map((user) => (
+    <User key={user.id}>
+      <UserAvaContainer>
+        <UserAva avaAddress={user.photos?.small} />
+      </UserAvaContainer>
+      <UserName>{user.name}</UserName>
       <Button
         onClick={() => {
-          handleFollowBtn(id)
+          handleFollowBtn(user.id)
         }}
       >
-        {!followed ? i18n.follow : i18n.unfollow}
+        {!user.followed ? i18n.follow : i18n.unfollow}
       </Button>
     </User>
   ))
@@ -70,11 +74,25 @@ const Root = styled.div`
 const User = styled.div`
   display: flex;
   flex-direction: column;
-  width: 200px;
-  height: 100px;
+  width: 100px;
+  padding: 0 0 50px;
+  margin: 2px;
 `
+const UserAvaContainer = styled.div`
+  display: flex;
+  align-self: center;
+`
+
+const UserName = styled.div`
+  display: flex;
+  color: rgb(71, 22, 80);
+  padding: 5px;
+  align-self: center;
+`
+
 const Button = styled.button`
-  border-radius: 5px;
+  border-radius: 50px;
+  width: 100px;
   &:active {
     color: brown;
   }

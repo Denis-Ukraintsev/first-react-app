@@ -7,6 +7,7 @@ export const fetchUsers = createAsyncThunk(
     const response = await usersApi.getUsers(pageNumber, 20)
 
     dispatch(setUsers(response?.data?.items))
+
     dispatch(setTotalCount(response?.data?.totalCount))
   }
 )
@@ -33,6 +34,7 @@ const userSlice = createSlice({
     setUsers: (state, action) => {
       state.users.push(...action.payload)
     },
+
     setTotalCount: (state, action) => {
       state.totalCount = action.payload
     },
