@@ -9,6 +9,7 @@ import {
 import InfiniteScroll from 'react-infinite-scroll-component'
 import spinner from '../../assets/spinner.gif'
 import UserAva from './UserAva'
+import { NavLink } from 'react-router-dom'
 
 const Users = () => {
   const dispatch = useDispatch()
@@ -30,7 +31,9 @@ const Users = () => {
   const usersArray = users.map((user) => (
     <User key={user.id}>
       <UserAvaContainer>
-        <UserAva avaAddress={user.photos?.small} />
+        <NavLink to="/Profile">
+          <UserAva avaAddress={user.photos?.small} />
+        </NavLink>
       </UserAvaContainer>
       <UserName>{user.name}</UserName>
       <Button
@@ -81,6 +84,9 @@ const User = styled.div`
 const UserAvaContainer = styled.div`
   display: flex;
   align-self: center;
+  &:hover {
+    transform: scale(1.2);
+  }
 `
 
 const UserName = styled.div`
@@ -93,6 +99,9 @@ const UserName = styled.div`
 const Button = styled.button`
   border-radius: 50px;
   width: 100px;
+  &:hover {
+    color: green;
+  }
   &:active {
     color: brown;
   }
