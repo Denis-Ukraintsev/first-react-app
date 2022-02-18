@@ -8,6 +8,7 @@ export const signIn = createAsyncThunk(
     const response = await authApi.signIn(login, password)
     if (response.data.resultCode === 0) {
       dispatch(setIsShowLoginModal(false))
+      dispatch(setUserId(response.data.data.userId))
     } else {
       dispatch(setSharedError(response.data.messages[0]))
       dispatch(setShowSharedError())
@@ -27,16 +28,24 @@ export const authMe = createAsyncThunk(
   'auth/authMe',
   async (_, { dispatch }) => {
     const response = await authApi.authMe()
-    dispatch(setIsInitialized(true))
-    if (response.data.resultCode !== 0) {
+
+    if (response.data.resultCode === 0) {
+      dispatch(setUserData(response.data.data))
+    } else {
       dispatch(setIsShowLoginModal(true))
     }
+    dispatch(setIsInitialized(true))
   }
 )
 
 const initialState = {
   isShowLoginModal: false,
   isInitialized: false,
+  data: {
+    id: null,
+    email: '',
+    login: '',
+  },
 }
 
 const authSlice = createSlice({
@@ -49,8 +58,15 @@ const authSlice = createSlice({
     setIsInitialized: (state, action) => {
       state.isInitialized = action.payload
     },
+    setUserData: (state, action) => {
+      state.data = action.payload
+    },
+    setUserId: (state, action) => {
+      state.data.id = action.payload
+    },
   },
 })
 
-export const { setIsShowLoginModal, setIsInitialized } = authSlice.actions
+export const { setIsShowLoginModal, setIsInitialized, setUserData, setUserId } =
+  authSlice.actions
 export default authSlice.reducer

@@ -31,7 +31,7 @@ const MyPosts = () => {
   }
 
   const postsElements = posts.map((p) => (
-    <Post message={p.message} id={p.id} likeCount={p.likeCount} />
+    <Post key={p.id} message={p.message} id={p.id} likeCount={p.likeCount} />
   ))
 
   return (

@@ -1,17 +1,41 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import MyPosts from '..//Profile/MyPosts/MyPosts'
 import styled from 'styled-components'
+import { useSelector, useDispatch } from 'react-redux'
+import { getProfile } from '../../redux/features/profileSlice'
+import Spinner from '../sharedComponents/Spinner'
+import { useParams } from 'react-router-dom'
 
 const Profile = () => {
+  const { userId } = useParams()
+  const { profileData, authUserId, loading } = useSelector(
+    ({ profile, auth }) => ({
+      profileData: profile.profileData,
+      loading: profile.loading,
+      authUserId: auth.data.id,
+    })
+  )
+  const dispatch = useDispatch()
+
+  useEffect(() => {
+    dispatch(getProfile(userId ? userId : authUserId))
+  }, [])
+
   const i18n = {
     description: 'Ava + Description',
   }
+
+  if (loading) {
+    return <Spinner />
+  }
+
   return (
     <Root>
-      <Img
+      {/* <Img
         img
         src="https://images.wallpaperscraft.ru/image/single/gory_ozero_vershiny_129263_2560x1440.jpg"
-      />
+      /> */}
+      <ItemContainer>{profileData?.fullName}</ItemContainer>
       <ItemContainer>{i18n.description}</ItemContainer>
       <MyPosts />
     </Root>

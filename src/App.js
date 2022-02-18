@@ -12,7 +12,8 @@ import { Route } from 'react-router'
 import styled from 'styled-components'
 import { useSelector, useDispatch } from 'react-redux'
 import { authMe } from './redux/features/authSlice'
-import spinner from './assets/spinner.gif'
+import Spinner from './components/sharedComponents/Spinner'
+import { ROUTES } from 'src/helpers/navHelper'
 
 const App = () => {
   const { isShowLoginModal, isInitialized, isShowSharedError } = useSelector(
@@ -31,7 +32,7 @@ const App = () => {
   if (!isInitialized) {
     return (
       <SpinnerContainer>
-        <Spinner src={spinner} alt="spinner" />
+        <Spinner />
       </SpinnerContainer>
     )
   }
@@ -42,19 +43,22 @@ const App = () => {
       <AppWrapper>
         <Navbar />
         <ContentWrapper>
-          <Route path="/Profile">
+          <Route path={ROUTES.PROFILE}>
             <Profile />
           </Route>
-          <Route path="/Dialogues">
+          <Route path={ROUTES.USER_PROFILE}>
+            <Profile />
+          </Route>
+          <Route path={ROUTES.DIALOGUES}>
             <Dialogues />
           </Route>
-          <Route path="/News">
+          <Route path={ROUTES.NEWS}>
             <News />
           </Route>
-          <Route path="/Photos">
+          <Route path={ROUTES.PHOTOS}>
             <Photos />
           </Route>
-          <Route path="/Users">
+          <Route path={ROUTES.USERS}>
             <Users />
           </Route>
         </ContentWrapper>
@@ -87,10 +91,6 @@ const SpinnerContainer = styled.div`
   align-items: center;
   width: 100%;
   height: 100vh;
-`
-const Spinner = styled.img`
-  width: 130px;
-  height: 100px;
 `
 
 export default App

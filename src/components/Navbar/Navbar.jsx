@@ -1,6 +1,7 @@
 import React from 'react'
 import { NavLink } from 'react-router-dom'
 import styled from 'styled-components'
+import { ROUTES } from 'src/helpers/navHelper'
 
 const Navbar = () => {
   const i18n = {
@@ -14,31 +15,31 @@ const Navbar = () => {
   return (
     <MenuContainer>
       <MenuItem>
-        <NavLink to="/Profile" activeStyle={activeStyles}>
+        <NavLink to={ROUTES.PROFILE} activeStyle={activeStyles}>
           {i18n.profile}
         </NavLink>
       </MenuItem>
       <br />
       <MenuItem>
-        <NavLink to="/Dialogues" activeStyle={activeStyles}>
+        <NavLink to={ROUTES.DIALOGUES} activeStyle={activeStyles}>
           {i18n.messages}
         </NavLink>
       </MenuItem>
       <br />
       <MenuItem>
-        <NavLink to="/News" activeStyle={activeStyles}>
+        <NavLink to={ROUTES.NEWS} activeStyle={activeStyles}>
           {i18n.news}
         </NavLink>
       </MenuItem>
       <br />
       <MenuItem>
-        <NavLink to="/Photos" activeStyle={activeStyles}>
+        <NavLink to={ROUTES.PHOTOS} activeStyle={activeStyles}>
           {i18n.photos}
         </NavLink>
       </MenuItem>
       <br />
       <MenuItem>
-        <NavLink to="/Users" activeStyle={activeStyles}>
+        <NavLink to={ROUTES.USERS} activeStyle={activeStyles}>
           {i18n.users}
         </NavLink>
       </MenuItem>

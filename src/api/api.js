@@ -15,6 +15,13 @@ export const usersApi = {
       .then((response) => response)
   },
 }
+
+export const profileApi = {
+  getProfile(id) {
+    return instance.get(`/profile/${id}`).then((response) => response)
+  },
+}
+
 export const authApi = {
   signIn(login, password) {
     return instance

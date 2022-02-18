@@ -31,7 +31,7 @@ const Users = () => {
   const usersArray = users.map((user) => (
     <User key={user.id}>
       <UserAvaContainer>
-        <NavLink to="/Profile">
+        <NavLink to={`/user/${user.id}`}>
           <UserAva avaAddress={user.photos?.small} />
         </NavLink>
       </UserAvaContainer>
