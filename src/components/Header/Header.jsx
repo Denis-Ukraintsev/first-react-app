@@ -1,19 +1,27 @@
 import React from 'react'
 import styled from 'styled-components'
-import { useDispatch } from 'react-redux'
-import { setIsShowLoginModal } from '../../redux/features/authSlice'
+import { useDispatch, useSelector } from 'react-redux'
+import { signOut, setIsShowLoginModal } from 'src/redux/features/authSlice'
 
 const Header = () => {
+  const { userId } = useSelector(({ auth }) => ({
+    userId: auth.data.id,
+  }))
   const dispatch = useDispatch()
   const handleShowLoginModal = () => {
     dispatch(setIsShowLoginModal(true))
+  }
+  const handleSignOut = () => {
+    dispatch(signOut())
   }
 
   return (
     <Root>
       <HeaderContainer>
         <HeaderImg src="https://simg.nicepng.com/png/small/50-501551_stadium-com-photography-icon-photography-logo-icon-png.png" />
-        <button onClick={handleShowLoginModal}>Sign In</button>
+        <button onClick={userId ? handleSignOut : handleShowLoginModal}>
+          {userId ? 'Sign out' : 'Sign in'}
+        </button>
       </HeaderContainer>
     </Root>
   )

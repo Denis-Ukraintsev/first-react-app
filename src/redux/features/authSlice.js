@@ -20,7 +20,7 @@ export const signOut = createAsyncThunk(
   async (_, { dispatch }) => {
     const response = await authApi.signOut()
     if (response.data.resultCode === 0) {
-      dispatch(setIsShowLoginModal(false))
+      dispatch(setUserData({ id: null, email: '', login: '' }))
     }
   }
 )
@@ -31,8 +31,6 @@ export const authMe = createAsyncThunk(
 
     if (response.data.resultCode === 0) {
       dispatch(setUserData(response.data.data))
-    } else {
-      dispatch(setIsShowLoginModal(true))
     }
     dispatch(setIsInitialized(true))
   }

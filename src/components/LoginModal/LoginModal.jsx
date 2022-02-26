@@ -1,7 +1,7 @@
 import React, { useState } from 'react'
 import styled from 'styled-components'
 import { useDispatch } from 'react-redux'
-import { signIn, signOut } from '../../redux/features/authSlice'
+import { signIn } from 'src/redux/features/authSlice'
 
 const LoginModal = () => {
   const [login, setLogin] = useState('den.from.oz@gmail.com')
@@ -10,9 +10,6 @@ const LoginModal = () => {
   const dispatch = useDispatch()
   const handleSignIn = () => {
     dispatch(signIn({ login, password }))
-  }
-  const handleSignOut = () => {
-    dispatch(signOut())
   }
 
   return (
@@ -32,7 +29,6 @@ const LoginModal = () => {
           }}
         />
         <LoginButton onClick={handleSignIn}>Sign In</LoginButton>
-        <LoginButton onClick={handleSignOut}>Sign Out</LoginButton>
       </Modal>
     </LoginModalOverlay>
   )

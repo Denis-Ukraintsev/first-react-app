@@ -18,7 +18,9 @@ const Profile = () => {
   const dispatch = useDispatch()
 
   useEffect(() => {
-    dispatch(getProfile(userId ? userId : authUserId))
+    if (userId || authUserId) {
+      dispatch(getProfile(userId ? userId : authUserId))
+    }
   }, [])
 
   const i18n = {
