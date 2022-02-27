@@ -1,14 +1,14 @@
 import React, { useEffect } from 'react'
 import Header from './components/Header/Header'
 import Navbar from './components/Navbar/Navbar'
-import Profile from './components/Profile/Profile'
+import ProfileContainer from './components/Profile/ProfileContainer'
 import Dialogues from './components/Dialogues/Dialogues'
 import News from './components/News/News'
 import Photos from './components/Photos/Photos'
 import Users from './components/Users/Users'
 import LoginModal from './components/LoginModal/LoginModal'
 import ErrorAlert from './components/LoginModal/ErrorAlert'
-import { Route } from 'react-router'
+import { Route, Redirect } from 'react-router'
 import styled from 'styled-components'
 import { useSelector, useDispatch } from 'react-redux'
 import { authMe } from './redux/features/authSlice'
@@ -16,13 +16,13 @@ import Spinner from './components/sharedComponents/Spinner'
 import { ROUTES } from 'src/helpers/navHelper'
 
 const App = () => {
-  const { isShowLoginModal, isInitialized, isShowSharedError } = useSelector(
-    ({ auth, shared }) => ({
+  const { userId, isShowLoginModal, isInitialized, isShowSharedError } =
+    useSelector(({ auth, shared }) => ({
       isShowLoginModal: auth.isShowLoginModal,
       isInitialized: auth.isInitialized,
       isShowSharedError: shared.isShowSharedError,
-    })
-  )
+      userId: auth.data.id,
+    }))
   const dispatch = useDispatch()
 
   useEffect(() => {
@@ -43,11 +43,13 @@ const App = () => {
       <AppWrapper>
         <Navbar />
         <ContentWrapper>
-          <Route path={ROUTES.PROFILE}>
-            <Profile />
-          </Route>
+          {!!userId && (
+            <Route path={ROUTES.PROFILE}>
+              <ProfileContainer />
+            </Route>
+          )}
           <Route path={ROUTES.USER_PROFILE}>
-            <Profile />
+            <ProfileContainer />
           </Route>
           <Route path={ROUTES.DIALOGUES}>
             <Dialogues />
@@ -60,6 +62,9 @@ const App = () => {
           </Route>
           <Route path={ROUTES.USERS}>
             <Users />
+          </Route>
+          <Route path="*">
+            <Redirect to={ROUTES.NEWS} />
           </Route>
         </ContentWrapper>
       </AppWrapper>
