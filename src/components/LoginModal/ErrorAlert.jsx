@@ -1,7 +1,7 @@
 import React from 'react'
-import styled from 'styled-components'
 import { useSelector, useDispatch } from 'react-redux'
-import { setCloseSharedError } from '..//..//redux/features/sharedSlice'
+import { setCloseSharedError } from 'src/redux/features/sharedSlice'
+import styled from 'styled-components'
 
 const ErrorAlert = () => {
   const i18n = {

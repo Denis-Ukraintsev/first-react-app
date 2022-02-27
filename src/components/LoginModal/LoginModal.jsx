@@ -1,7 +1,7 @@
 import React, { useState } from 'react'
-import styled from 'styled-components'
 import { useDispatch } from 'react-redux'
 import { signIn } from 'src/redux/features/authSlice'
+import styled from 'styled-components'
 
 const LoginModal = () => {
   const [login, setLogin] = useState('den.from.oz@gmail.com')

@@ -1,5 +1,5 @@
+import userAvatar from 'src/assets/userAvatar.png'
 import styled from 'styled-components'
-import userAvatar from '../../assets/userAvatar.png'
 
 const UserAva = ({ avaAddress }) => (
   <AvaContainer>

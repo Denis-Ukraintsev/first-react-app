@@ -1,12 +1,12 @@
 import React from 'react'
-import DialogueItem from './DialogueItem/DialogueItem'
-import Message from './Message/Message'
-import styled from 'styled-components'
 import { useSelector, useDispatch } from 'react-redux'
 import {
   addNewMessage,
   updateNewPostMessage,
-} from '../../redux/features/dialogueSlice'
+} from 'src/redux/features/dialogueSlice'
+import DialogueItem from 'src/components/Dialogues/DialogueItem/DialogueItem'
+import Message from 'src/components/Dialogues/Message/Message'
+import styled from 'styled-components'
 
 const Dialogues = () => {
   const dispatch = useDispatch()

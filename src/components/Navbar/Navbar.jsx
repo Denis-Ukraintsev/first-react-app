@@ -1,8 +1,8 @@
 import React from 'react'
 import { NavLink } from 'react-router-dom'
-import styled from 'styled-components'
-import { ROUTES } from 'src/helpers/navHelper'
 import { useSelector } from 'react-redux'
+import { ROUTES } from 'src/helpers/navHelper'
+import styled from 'styled-components'
 
 const Navbar = () => {
   const { userId } = useSelector(({ auth }) => ({

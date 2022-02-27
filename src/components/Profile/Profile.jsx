@@ -1,8 +1,8 @@
 import React, { useEffect } from 'react'
-import MyPosts from 'src/components/Profile/MyPosts/MyPosts'
-import styled from 'styled-components'
-import Spinner from 'src/components/sharedComponents/Spinner'
 import { useParams } from 'react-router-dom'
+import MyPosts from 'src/components/Profile/MyPosts/MyPosts'
+import Spinner from 'src/components/sharedComponents/Spinner'
+import styled from 'styled-components'
 
 const Profile = ({ profileData, authUserId, loading, getProfile }) => {
   const { userId } = useParams()

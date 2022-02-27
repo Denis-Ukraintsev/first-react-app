@@ -1,7 +1,7 @@
 import React from 'react'
-import styled from 'styled-components'
 import { connect } from 'react-redux'
 import { signOut, setIsShowLoginModal } from 'src/redux/features/authSlice'
+import styled from 'styled-components'
 
 const Header = ({ userId, signOut, setIsShowLoginModal }) => {
   const handleShowLoginModal = () => {

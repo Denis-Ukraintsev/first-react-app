@@ -1,15 +1,15 @@
 import React, { useEffect } from 'react'
-import styled from 'styled-components'
+import { NavLink } from 'react-router-dom'
 import { useSelector, useDispatch } from 'react-redux'
 import {
   follow,
   fetchUsers,
   setCurrentPage,
-} from '../../redux/features/usersSlice'
+} from 'src/redux/features/usersSlice'
+import UserAva from 'src/components/Users/UserAva'
+import spinner from 'src/assets/spinner.gif'
 import InfiniteScroll from 'react-infinite-scroll-component'
-import spinner from '../../assets/spinner.gif'
-import UserAva from './UserAva'
-import { NavLink } from 'react-router-dom'
+import styled from 'styled-components'
 
 const Users = () => {
   const dispatch = useDispatch()

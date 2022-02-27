@@ -1,6 +1,6 @@
 import React from 'react'
 import styled from 'styled-components'
-import spinner from '../../assets/spinner.gif'
+import spinner from 'src/assets/spinner.gif'
 
 const Spinner = () => <SpinnerImg src={spinner} alt="spinner" />
 
