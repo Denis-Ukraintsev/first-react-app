@@ -1,6 +1,9 @@
 import { createSlice, createAsyncThunk } from '@reduxjs/toolkit'
-import { authApi } from '../../api/api'
-import { setSharedError, setShowSharedError } from './sharedSlice'
+import { authApi } from 'src/api/api'
+import {
+  setSharedError,
+  setShowSharedError,
+} from 'src/redux/features/sharedSlice'
 
 export const signIn = createAsyncThunk(
   'auth/signIn',

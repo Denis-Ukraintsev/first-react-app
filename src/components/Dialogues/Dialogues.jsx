@@ -1,5 +1,5 @@
 import React from 'react'
-import { useSelector, useDispatch } from 'react-redux'
+import { connect } from 'react-redux'
 import {
   addNewMessage,
   updateNewPostMessage,
@@ -8,17 +8,19 @@ import DialogueItem from 'src/components/Dialogues/DialogueItem/DialogueItem'
 import Message from 'src/components/Dialogues/Message/Message'
 import styled from 'styled-components'
 
-const Dialogues = () => {
-  const dispatch = useDispatch()
-  const { dialogues, messages, newMessage } = useSelector(
-    ({ dialoguesPage }) => dialoguesPage
-  )
+const Dialogues = ({
+  dialogues,
+  messages,
+  newMessage,
+  addNewMessage,
+  updateNewPostMessage,
+}) => {
   const onAddNewMessage = () => {
-    dispatch(addNewMessage())
+    addNewMessage()
   }
 
   const onMessageChange = (text) => {
-    dispatch(updateNewPostMessage(text))
+    updateNewPostMessage(text)
   }
 
   const MessageChange = (event) => {
@@ -87,5 +89,13 @@ const Textarea = styled.div`
   display: flex;
   padding-left: 13px;
 `
+const mapStateToProps = ({ dialoguesPage }) => ({
+  dialogues: dialoguesPage.dialogues,
+  messages: dialoguesPage.messages,
+  newMessage: dialoguesPage.newMessage,
+})
 
-export default Dialogues
+export default connect(mapStateToProps, {
+  addNewMessage,
+  updateNewPostMessage,
+})(Dialogues)

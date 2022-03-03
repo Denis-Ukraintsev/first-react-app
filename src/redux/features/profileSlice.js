@@ -1,6 +1,9 @@
 import { createSlice, createAsyncThunk } from '@reduxjs/toolkit'
-import { profileApi } from '../../api/api'
-import { setSharedError, setShowSharedError } from './sharedSlice'
+import { profileApi } from 'src/api/api'
+import {
+  setSharedError,
+  setShowSharedError,
+} from 'src/redux/features/sharedSlice'
 
 export const getProfile = createAsyncThunk(
   'profile/getProfile',
