@@ -15,28 +15,20 @@ const Dialogues = ({
   addNewMessage,
   updateNewPostMessage,
 }) => {
-  const onAddNewMessage = () => {
-    addNewMessage()
-  }
-
-  const onMessageChange = (text) => {
-    updateNewPostMessage(text)
-  }
-
-  const MessageChange = (event) => {
-    const text = event.currentTarget.value
-    onMessageChange(text)
+  const messageChange = ({ currentTarget }) => {
+    updateNewPostMessage(currentTarget.value)
   }
 
   const i18n = {
     button: 'Add new message',
+    placeholder: 'type new message here',
   }
-  const dialoguesElements = dialogues.map((d) => (
-    <DialogueItem name={d.name} id={d.id} avatar={d.avatar} />
+  const dialoguesElements = dialogues?.map((d) => (
+    <DialogueItem key={d.id} name={d.name} id={d.id} avatar={d.avatar} />
   ))
 
-  const messagesElements = messages.map((m) => (
-    <Message message={m.message} id={m.id} />
+  const messagesElements = messages?.map((m) => (
+    <Message key={m.id} message={m.message} id={m.id} />
   ))
 
   return (
@@ -45,16 +37,14 @@ const Dialogues = ({
         <DialoguesElements>{dialoguesElements}</DialoguesElements>
         <MessagesElements>{messagesElements}</MessagesElements>
       </ContentWrapper>
-      <Button>
-        <button onClick={onAddNewMessage}>{i18n.button}</button>
-        <Textarea>
-          <textarea
-            placeholder="type new message here"
-            onChange={MessageChange}
-            value={newMessage}
-          />
-        </Textarea>
-      </Button>
+      <InputContainer>
+        <button onClick={addNewMessage}>{i18n.button}</button>
+        <Textarea
+          placeholder={i18n.placeholder}
+          onChange={messageChange}
+          value={newMessage}
+        />
+      </InputContainer>
     </Root>
   )
 }
@@ -82,12 +72,11 @@ const MessagesElements = styled.div`
   flex-direction: column;
 `
 
-const Button = styled.div`
+const InputContainer = styled.div`
   display: flex;
 `
-const Textarea = styled.div`
-  display: flex;
-  padding-left: 13px;
+const Textarea = styled.textarea`
+  margin-left: 13px;
 `
 const mapStateToProps = ({ dialoguesPage }) => ({
   dialogues: dialoguesPage.dialogues,
