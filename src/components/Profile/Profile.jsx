@@ -11,7 +11,7 @@ const Profile = ({ profileData, authUserId, loading, getProfile }) => {
     if (userId || authUserId) {
       getProfile(userId ? userId : authUserId)
     }
-  }, [])
+  }, [authUserId, getProfile, userId])
 
   const i18n = {
     description: 'Ava + Description',

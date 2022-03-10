@@ -7,6 +7,7 @@ import {
 import DialogueItem from 'src/components/Dialogues/DialogueItem/DialogueItem'
 import Message from 'src/components/Dialogues/Message/Message'
 import styled from 'styled-components'
+import { blue, purple } from 'src/theme/colors'
 
 const Dialogues = ({
   dialogues,
@@ -50,7 +51,7 @@ const Dialogues = ({
 }
 
 const Root = styled.div`
-  color: rgb(23, 88, 104);
+  color: ${blue};
   display: flex;
   flex-direction: column;
   padding: 5px;
@@ -67,7 +68,7 @@ const DialoguesElements = styled.div`
 `
 
 const MessagesElements = styled.div`
-  color: rgb(71, 22, 80);
+  color: ${purple};
   display: flex;
   flex-direction: column;
 `

@@ -1,40 +1,56 @@
-import React, { useState } from 'react'
+import React from 'react'
 import { useDispatch } from 'react-redux'
 import { signIn } from 'src/redux/features/authSlice'
 import styled from 'styled-components'
+import { useForm } from 'react-hook-form'
+import { emailRegEx } from 'src/helpers/regExPatterns'
 
 const LoginModal = () => {
-  const [login, setLogin] = useState('den.from.oz@gmail.com')
-  const [password, setPassword] = useState('')
+  const {
+    register,
+    handleSubmit,
+    formState: { errors },
+  } = useForm()
 
   const dispatch = useDispatch()
-  const handleSignIn = () => {
+  const handleSignIn = ({ login, password }) => {
     dispatch(signIn({ login, password }))
   }
 
   return (
     <LoginModalOverlay>
-      <Modal>
+      <Modal onSubmit={handleSubmit(handleSignIn)}>
         <StyledInput
-          value={login}
-          onChange={(event) => {
-            setLogin(event.target.value)
-          }}
+          {...register('login', {
+            validate: {
+              notEmail: (value) => emailRegEx.test(value),
+            },
+            required: true,
+          })}
         />
+        {errors.login &&
+          errors.login.type === 'notEmail' &&
+          'email is not valid'}
+        {errors.login?.type === 'required' && 'Login is required'}
         <StyledInput
           type="password"
-          value={password}
-          onChange={(event) => {
-            setPassword(event.target.value)
-          }}
+          {...register('password', {
+            required: true,
+            minLength: {
+              value: 4,
+              message: 'password should have more symbols',
+            },
+          })}
         />
-        <LoginButton onClick={handleSignIn}>Sign In</LoginButton>
+        {errors.password?.type === 'required' && 'Password is required'}
+        {errors.password?.message && errors.password?.message}
+        <LoginButton type="submit">Sign In</LoginButton>
       </Modal>
     </LoginModalOverlay>
   )
 }
 
-const Modal = styled.div`
+const Modal = styled.form`
   display: flex;
   flex-direction: column;
   justify-content: center;
