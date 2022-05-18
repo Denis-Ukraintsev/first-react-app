@@ -1,5 +1,8 @@
 {
   "name": "den-app",
+  "jest": {
+    "testEnvironment": "jsdom"
+  },
   "version": "0.1.0",
   "private": true,
   "dependencies": {
@@ -21,7 +24,7 @@
   "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build",
-    "test": "react-scripts test",
+    "test": "jest --no-cache",
     "eject": "react-scripts eject"
   },
   "eslintConfig": {
@@ -43,5 +46,13 @@
     ]
   },
   "keywords": [],
-  "description": ""
+  "description": "",
+  "devDependencies": {
+    "@babel/preset-env": "^7.17.12",
+    "@babel/preset-react": "^7.17.12",
+    "babel-jest": "^28.1.0",
+    "jest": "^28.1.0",
+    "jest-environment-jsdom": "^28.1.0",
+    "react-test-renderer": "^18.1.0"
+  }
 }
